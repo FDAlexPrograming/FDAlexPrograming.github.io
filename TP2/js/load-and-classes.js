@@ -1,3 +1,5 @@
+"use strict";
+
 firstLoad();
 
 let loadingPercentage = 0;
@@ -28,18 +30,19 @@ class Card {
         this.title = title;
         this.imageURI = image;
         this.price = price;
+        console.log(image);
     }
 
     getView() {
         return `<div class="card-game">
 <!--                    <img src="isset/cart-icon.svg" class="cart-button" alt="add-to-cart image">-->
-                    <img src="isset/game1 1.png" alt="${this.title} image">
+                    <img src="${this.imageURI}" alt="${this.title} image">
                     <div class="container">
                         <h3>${this.title}</h3>
                         <div class="buy">
                             <p class="price-text">${this.price === 0 ? "Free" : this.price}</p>
                             <button class="play">${this.price === 0 ? "Play" : "Buy"}</button>
-                        </div>                   
+                        </div>
                     </div>
                 </div>`;
     }
@@ -64,7 +67,7 @@ class Carousel {
         this.cards = "";
         for (let card of cards) {
             let c = new Card(card.title, card.image, card.price);
-            this.cards += c.getView();
+            this.cards += card.getView();
         }
         // this.buttonLeft = document.createElement("button");
         // this.buttonRight = document.createElement("button");
@@ -106,14 +109,14 @@ function scrollCarousel(id) {
 }
 
 function loadContent() {
-    let c = new Card("4-In-a-Row: Dragon Ball", "isset/game1 1.png", 39.99);
+    let c = new Card("4-In-a-Row: Dragon Ball", "./images/game1.png", 39.99);
     let cards = [];
     for (let i = 0; i < 10; i++) {
         cards.push(c);
     }
-
     let car1 = new Carousel("car1", "Recommended for you", cards);
     let main = document.querySelector("#main-container");
+    console.log(car1.getView());
     main.innerHTML += loadHeader();
     // main.appendChild(car1.wrapperScroll);
     main.innerHTML += car1.getView();
