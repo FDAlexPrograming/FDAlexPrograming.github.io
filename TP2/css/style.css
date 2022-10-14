@@ -110,14 +110,20 @@ section h1{
 }
 
 #btn,#btn2,#btn3,#btn4,#btn5,#btn6, .btn-carousel{
+    vertical-align: center;
     font-size: 2rem;
     color: #000000;
-    background: #360950;
+    background: #4B4253;
     border: none;
     width: 40px;
-    height: 60px;
+    height: 50px;
     border-radius: 10px;
     align-items: center;
+    transition: background-color 1s ease-out 50ms;
+}
+
+.btn-carousel:hover {
+    background-color: #6D54B1;
 }
 
 
@@ -161,6 +167,11 @@ section h1{
 .card-game img{
     height: 230px;
     object-fit: cover;
+}
+
+.fa-solid {
+    height: 100%;
+    padding: 5%;
 }
 
 .container {
