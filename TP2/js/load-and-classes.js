@@ -314,7 +314,7 @@ function loadHeader() {
     </header>
     <section>
         <img src="isset/background.jpg" alt="">
-    </section>
+    
     <div class="wrapper-scroll no-rell">
         <div class="scrolling-wrapper">
             <div class="card">
@@ -342,7 +342,8 @@ function loadHeader() {
                 </div>
             </div>
         </div>
-    </div>`;
+    </div>
+</section>`;
 }
 
 function loadFooter() {
