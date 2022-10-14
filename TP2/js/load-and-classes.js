@@ -21,16 +21,134 @@ function increasePercentage(indicator) {
     }
 }
 
+let games = [
+    {
+        "title": "Star Wars: Squadrons",
+        "imageURI": "./images/game1_1_2.png",
+        "price": "0"
+    },
+    {
+        "title": "Horizon Chase Turbo",
+        "imageURI": "./images/game1_1_3.png",
+        "price": "0"
+    },
+    {
+        "title": "Imp of the Sun",
+        "imageURI": "./images/game1_1_4.png",
+        "price": "0"
+    },
+    {
+        "title": "Tunche",
+        "imageURI": "./images/game1_1_5.png",
+        "price": "$4.99"
+    },
+    {
+        "title": "Cris Tales",
+        "imageURI": "./images/game1_1_6.png",
+        "price": "$4.99"
+    },
+    {
+        "title": "The Eternal Cylinder",
+        "imageURI": "./images/game1_1_7.png",
+        "price": "$4.99"
+    },
+    {
+        "title": "Tower Princess",
+        "imageURI": "./images/game1_1_8.png",
+        "price": "0"
+    },
+    {
+        "title": "Giga Bash",
+        "imageURI": "./images/game1_1_9.png",
+        "price": "$4.99"
+    },
+    {
+        "title": "Little Orpheus",
+        "imageURI": "./images/game1_1_10.png",
+        "price": "0"
+    },
+    {
+        "title": "XIII",
+        "imageURI": "./images/game1_1_11.png",
+        "price": "$4.99"
+    },
+    {
+        "title": "Fantasy Wars",
+        "imageURI": "./images/game1_1_12.png",
+        "price": "$4.99"
+    },
+    {
+        "title": "Jack Move",
+        "imageURI": "./images/game1_1_13.png",
+        "price": "$4.99"
+    },
+    {
+        "title": "Gift of Parthax",
+        "imageURI": "./images/game1_1_14.png",
+        "price": "$4.99"
+    },
+    {
+        "title": "SteelRising",
+        "imageURI": "./images/game1_1_15.png",
+        "price": "$4.99"
+    },
+    {
+        "title": "Kaichu: Kaiju Dating Sim",
+        "imageURI": "./images/game1_1_16.png",
+        "price": "$4.99"
+    },
+    {
+        "title": "Train Sim World 3",
+        "imageURI": "./images/game1_1_17.png",
+        "price": "$4.99"
+    },
+    {
+        "title": "WW1 Isonzo: Italian Front",
+        "imageURI": "./images/game1_1_25.png",
+        "price": "$4.99"
+    },
+    {
+        "title": "Hazel Sky",
+        "imageURI": "./images/game1_1_26.png",
+        "price": "$4.99"
+    }
+]
+
 class Card {
     title;
     imageURI;
     price;
+    card;
 
     constructor(title, image, price) {
         this.title = title;
         this.imageURI = image;
         this.price = price;
         console.log(image);
+        this.card = document.createElement("div");
+        this.card.classList.add("card-game");
+        let img = document.createElement("img");
+        img.src=image;
+        img.alt = `${this.title} image`;
+        let container = document.createElement("div");
+        container.classList.add("container");
+        let h3 = document.createElement("h3");
+        h3.textContent = title;
+        let buy = document.createElement("div");
+        buy.classList.add("buy");
+        let priceText = document.createElement("p");
+        priceText.classList.add("price-text");
+        priceText.textContent = (price === "0" ? "Free" : price);
+        let play = document.createElement("button");
+        play.classList.add("play");
+        play.textContent = (price === "0" ? "Play" : "Buy");
+
+        buy.appendChild(priceText);
+        buy.appendChild(play);
+        container.appendChild(h3);
+        container.appendChild(buy);
+        this.card.appendChild(img);
+        this.card.appendChild(container);
     }
 
     getView() {
@@ -65,10 +183,10 @@ class Carousel {
         this.id = id;
         console.log(this.id);
         this.sectionTitle = sectionTitle;
-        this.cards = "";
-        for (let card of cards) {
-            this.cards += card.getView();
-        }
+        // this.cards = "";
+        // for (let card of cards) {
+        //     // this.cards += card.getView();
+        // }
         this.section = document.createElement("section");
         this.section.classList.add("game-section");
         this.buttonLeft = document.createElement("button");
@@ -94,7 +212,10 @@ class Carousel {
         this.scrollingWrapperCard = document.createElement("div");
         this.scrollingWrapperCard.classList.add("scrolling-wrapper-card");
         this.scrollingWrapperCard.appendChild(this.h1);
-        this.scrollingWrapperCard.innerHTML = this.cards;
+        // this.scrollingWrapperCard.innerHTML = this.cards;
+        for (let card of cards) {
+            this.scrollingWrapperCard.appendChild(card);
+        }
         this.section.appendChild(this.wrapperScroll);
         this.wrapperScroll.appendChild(this.scrollingWrapperCard);
         this.section.appendChild(btns);
@@ -127,14 +248,33 @@ function scrollCarousel(id) {
 
 function loadContent() {
     let c = new Card("4-In-a-Row: Dragon Ball", "./images/game1.png", 39.99);
-    let cards = [];
-    for (let i = 0; i < 10; i++) {
-        cards.push(c);
+    let recommendedGames = [];
+    let paidNews = [];
+    let mostPlayed = [];
+    for (let i = 0; i < 8; i++) {
+        let card = new Card(games[i].title, games[i].imageURI, games[i].price);
+        recommendedGames.push(card.card);
     }
-    let car1 = new Carousel("car1", "Recommended for you", cards);
+    for (let i = 8; i < 16; i++) {
+        let card = new Card(games[i].title, games[i].imageURI, games[i].price);
+        paidNews.push(card.card);
+    }
+    for (let i = games.length-1; i > 0; i--) {
+        let card = new Card(games[i].title, games[i].imageURI, games[i].price);
+        mostPlayed.push(card.card);
+    }
+    let car1 = new Carousel("car1", "Recommended for you", recommendedGames);
+    let car2 = new Carousel("car3", "Paid News", paidNews);
+    let car3 = new Carousel("car2", "Most Played", mostPlayed);
     let main = document.querySelector("#main-container");
     main.innerHTML += loadHeader();
+    document.querySelector(".btn_menu").addEventListener("click", function (e) {
+        document.querySelector(".navigation").classList.toggle("navigation_mobil");
+
+    });
     main.appendChild(car1.section);
+    main.appendChild(car2.section);
+    main.appendChild(car3.section);
     // main.innerHTML += car1.getView();
 }
 
@@ -203,4 +343,8 @@ function loadHeader() {
             </div>
         </div>
     </div>`;
+}
+
+function loadFooter() {
+    // TODO
 }
