@@ -59,6 +59,7 @@ class Carousel {
     buttonLeft;
     buttonRight;
     scrollingWrapperCard;
+    section;
 
     constructor(id, sectionTitle, cards) {
         this.id = id;
@@ -66,46 +67,62 @@ class Carousel {
         this.sectionTitle = sectionTitle;
         this.cards = "";
         for (let card of cards) {
-            let c = new Card(card.title, card.image, card.price);
             this.cards += card.getView();
         }
-        // this.buttonLeft = document.createElement("button");
-        // this.buttonRight = document.createElement("button");
-        // this.buttonLeft.onclick(this.scroll(-400));
-        // this.buttonRight.onclick(this.scroll(400));
-        // this.wrapperScroll = document.createElement("section");
-        // this.wrapperScroll.classList.add("wrapper-scroll");
-        // this.h1 = document.createElement("h1");
-        // this.h1.textContent = sectionTitle;
-        // this.scrollingWrapperCard = document.createElement("div");
-        // this.scrollingWrapperCard.classList.add("scrolling-wrapper-card");
-        // this.scrollingWrapperCard.innerHTML = this.cards;
-        // this.wrapperScroll.appendChild(this.h1);
-        // this.wrapperScroll.appendChild(this.buttonLeft);
-        // this.wrapperScroll.appendChild(this.scrollingWrapperCard);
-        // this.wrapperScroll.appendChild(this.buttonRight);
+        this.section = document.createElement("section");
+        this.section.classList.add("game-section");
+        this.buttonLeft = document.createElement("button");
+        this.buttonRight = document.createElement("button");
+        this.buttonRight.classList.add("btn-carousel");
+        this.buttonLeft.classList.add("btn-carousel");
+        let btns = document.createElement("div");
+        btns.classList.add("btns");
+        btns.appendChild(this.buttonLeft);
+        btns.appendChild(this.buttonRight);
+        let iconLeft = document.createElement("i");
+        let iconRight = document.createElement("i");
+        iconLeft.classList.add("fa-solid", "fa-chevron-left");
+        iconRight.classList.add("fa-solid", "fa-chevron-right");
+        this.buttonLeft.appendChild(iconLeft);
+        this.buttonRight.appendChild(iconRight);
+        iconLeft.addEventListener('click', () => { this.scrollCarousel(-400)});
+        iconRight.addEventListener('click', () => { this.scrollCarousel(400)});
+        this.wrapperScroll = document.createElement("div");
+        this.wrapperScroll.classList.add("wrapper-scroll");
+        this.h1 = document.createElement("h1");
+        this.h1.textContent = sectionTitle;
+        this.scrollingWrapperCard = document.createElement("div");
+        this.scrollingWrapperCard.classList.add("scrolling-wrapper-card");
+        this.scrollingWrapperCard.appendChild(this.h1);
+        this.scrollingWrapperCard.innerHTML = this.cards;
+        this.section.appendChild(this.wrapperScroll);
+        this.wrapperScroll.appendChild(this.scrollingWrapperCard);
+        this.section.appendChild(btns);
     }
 
     getView() {
 
-        return `<section class="wrapper-scroll">
-                    <h1>${this.sectionTitle}</h1>
-                    <button onclick="scrollCarousel(${this.id})"></button>
-                    <div class="scrolling-wrapper-card" id="${this.id}">
-                        ${this.cards}
+        return `<section>
+                    <div class="wrapper-scroll">
+                        <h1>${this.sectionTitle}</h1>
+                        <div class="scrolling-wrapper-card" id="${this.id}">
+                            ${this.cards}
+                        </div>
                     </div>
-                    <button onclick="scrollCarousel(${this.id})"></button>
+                    <div class="btns">
+                        <button onclick="scrollCarousel(${this.id})"><i class="fa-solid fa-chevron-left"></i></button>
+                        <button><i class="fa-solid fa-chevron-right"></i></button>
+                    </div>
                 </section>`;
     }
 
-    scroll() {
-        document.getElementById(this.id).scrollLeft += -400;
+    scrollCarousel(value) {
+        this.scrollingWrapperCard.scrollLeft += value;
     }
 }
 
 function scrollCarousel(id) {
-
-    document.getElementById("car1").scrollLeft += -400;
+    console.log(document.getElementById(id));
 }
 
 function loadContent() {
@@ -116,12 +133,9 @@ function loadContent() {
     }
     let car1 = new Carousel("car1", "Recommended for you", cards);
     let main = document.querySelector("#main-container");
-    console.log(car1.getView());
     main.innerHTML += loadHeader();
-    // main.appendChild(car1.wrapperScroll);
-    main.innerHTML += car1.getView();
-    main.innerHTML += car1.getView();
-    main.innerHTML += car1.getView();
+    main.appendChild(car1.section);
+    // main.innerHTML += car1.getView();
 }
 
 function loadHeader() {
