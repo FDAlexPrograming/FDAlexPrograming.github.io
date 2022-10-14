@@ -1,0 +1,19 @@
+body {
+    background: #0D0A12;
+}
+
+h2 {
+    color: #FFFFFF
+}
+
+.hidden {
+    display: none;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+}
+
+.cart-icon {
+    max-height: 33px;
+    max-width: 33px;
+}
