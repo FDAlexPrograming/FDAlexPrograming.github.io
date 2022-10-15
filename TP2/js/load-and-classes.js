@@ -6,6 +6,7 @@ let loadingPercentage = 0;
 var loaderID;
 
 function firstLoad() {
+    document.getElementsByTagName("footer").item(0).classList.add("hidden");
     let indicator = document.querySelector("#loader-percentage");
     indicator.textContent = "0%";
     loaderID = setInterval(()=> { increasePercentage(indicator); }, 50);
@@ -17,6 +18,7 @@ function increasePercentage(indicator) {
         clearInterval(loaderID);
         indicator.classList.add("hidden");
         indicator.parentElement.classList.add("hidden");
+        document.getElementsByTagName("footer").item(0).classList.remove("hidden");
         loadContent();
     }
 }
@@ -124,7 +126,6 @@ class Card {
         this.title = title;
         this.imageURI = image;
         this.price = price;
-        console.log(image);
         this.card = document.createElement("div");
         this.card.classList.add("card-game");
         let img = document.createElement("img");
@@ -181,7 +182,6 @@ class Carousel {
 
     constructor(id, sectionTitle, cards) {
         this.id = id;
-        console.log(this.id);
         this.sectionTitle = sectionTitle;
         // this.cards = "";
         // for (let card of cards) {
@@ -203,8 +203,8 @@ class Carousel {
         iconRight.classList.add("fa-solid", "fa-chevron-right");
         this.buttonLeft.appendChild(iconLeft);
         this.buttonRight.appendChild(iconRight);
-        iconLeft.addEventListener('click', () => { this.scrollCarousel(-400)});
-        iconRight.addEventListener('click', () => { this.scrollCarousel(400)});
+        this.buttonLeft.addEventListener('click', () => { this.scrollCarousel(-400)});
+        this.buttonRight.addEventListener('click', () => { this.scrollCarousel(400)});
         this.wrapperScroll = document.createElement("div");
         this.wrapperScroll.classList.add("wrapper-scroll");
         this.h1 = document.createElement("h1");
@@ -265,10 +265,9 @@ function loadContent() {
     let car3 = new Carousel("car2", "Most Played", mostPlayed);
     let main = document.querySelector("#main-container");
     main.innerHTML += loadHeader();
-    main.innerHTML += loadFooter();
     document.querySelector(".btn_menu").addEventListener("click", function (e) {
         document.querySelector(".navigation").classList.toggle("navigation_mobil");
-       
+
     });
     main.appendChild(car1.section);
     main.appendChild(car2.section);
@@ -316,25 +315,25 @@ function loadHeader() {
     <div class="wrapper-scroll no-rell">
         <div class="scrolling-wrapper">
             <div class="card">
-                <img src="isset/casual.png"Avatar" style="width:100%">
+                <img src="isset/casual.png">
                 <div class="container">
                 <h2>Casual</h2>   
                 </div>
             </div>
             <div class="card">
-                <img src="isset/rol.png"Avatar" style="width:100%">
+                <img src="isset/rol.png">
                 <div class="container">
                 <h2>Rol</h2>   
                 </div>
             </div>
             <div class="card">
-                <img src="isset/indie.png"Avatar" style="width:100%">
+                <img src="isset/indie.png">
                 <div class="container">
                 <h2>Indie</h2>     
                 </div>
             </div>
             <div class="card">
-                <img src="isset/mult.png"Avatar" style="width:100%">
+                <img src="isset/mult.png">
                 <div class="container">
                 <h2>Multiplayer</h2>   
                 </div>
@@ -346,47 +345,45 @@ function loadHeader() {
 }
 
 function loadFooter() {
-    return  ` <footer>
-    <ul>
-        <h2>Categories</h2>
-        <li>Action</li>
-        <li>Adventure</li>
-        <li>Racing</li>
-        <li>Sports</li>
-        <li>Puzzle</li>
-        <li>Platforms</li>
-        <li>Simulation</li>
-    </ul>
-    <ul >
-        <h2>Account</h2>
-        <li>My Profile</li>
-        <li>Billing Information</li>
-        <li>Reset Password</li>
-        <li>My Games</li>
-        <li>Purchase History</li>
-        <li>Puzzle</li>
-        <li>Cart</li>
-    </ul>
-    <ul>
-        <h2>Help</h2>
-        <li>Terms of Service</li>
-        <li>Refund Policy</li>
-        <li>FAQs</li>
-        <li>Report a bug</li>
-    </ul>
-    <ul>
-        <h2> About us</h2>
-        <li>Some address, some province</li>
-        <li>That Nice Building, 3rd floor</li>
-        <li>Contact</li>
-        <li>Who We Are</li>
-        <li>Our Team</li>
-        <li>Simulation</li>
+    return  `<footer>
+            <h2>Categories</h2>
         <ul>
-            <i class="fa-brands fa-square-facebook"></i>
-            <i class="fa-brands fa-instagram"></i>
-            <i class="fa-brands fa-square-twitter"></i>
+            <li>Action</li>
+            <li>Adventure</li>
+            <li>Racing</li>
+            <li>Sports</li>
+            <li>Puzzle</li>
+            <li>Platforms</li>
+            <li>Simulation</li>
         </ul>
-    </ul>
-</footer>`;
+            <h2>Account</h2>
+        <ul >
+            <li>My Profile</li>
+            <li>Billing Information</li>
+            <li>Reset Password</li>
+            <li>My Games</li>
+            <li>Purchase History</li>
+            <li>Puzzle</li>
+            <li>Cart</li>
+        </ul>
+            <h2>Help</h2>
+        <ul>
+            <li>Terms of Service</li>
+            <li>Refund Policy</li>
+            <li>FAQs</li>
+            <li>Report a bug</li>
+        </ul>
+            <h2> About us</h2>
+        <ul>
+            <li>Some address, some province</li>
+            <li>That Nice Building, 3rd floor</li>
+            <li>Contact</li>
+            <li>Who We Are</li>
+            <li>Our Team</li>
+            <li>Simulation</li>
+        </ul>
+                            <i class="fa-brands fa-square-facebook"></i>
+                            <i class="fa-brands fa-instagram"></i>
+                            <i class="fa-brands fa-square-twitter"></i>
+    </footer>`;
 }
