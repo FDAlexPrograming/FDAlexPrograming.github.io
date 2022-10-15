@@ -110,8 +110,16 @@ section h1{
 }
 
 .btn-carousel {
-    display: none;
-   
+    vertical-align: center;
+    font-size: 2rem;
+    color: #000000;
+    background: #4B4253;
+    border: none;
+    width: 40px;
+    height: 50px;
+    border-radius: 10px;
+    align-items: center;
+    transition: background-color 1s ease-out 50ms;
 }
 
 
@@ -373,9 +381,20 @@ margin: 10px 10px 0 0;
     padding: 0;
 }
 
-  
+@media (max-width: 550px) {
 
-   
+    .wrapper-scroll {
+        padding: 0;
+    }
+
+    .btn-carousel {
+        display: none;
+    }
+
+    footer {
+        justify-content: normal;
+    }
+}
 
 @media (min-width: 550px) {
 
