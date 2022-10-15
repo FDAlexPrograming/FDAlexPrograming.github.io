@@ -242,9 +242,6 @@ class Carousel {
     }
 }
 
-function scrollCarousel(id) {
-    console.log(document.getElementById(id));
-}
 
 function loadContent() {
     let c = new Card("4-In-a-Row: Dragon Ball", "./images/game1.png", 39.99);
@@ -268,9 +265,10 @@ function loadContent() {
     let car3 = new Carousel("car2", "Most Played", mostPlayed);
     let main = document.querySelector("#main-container");
     main.innerHTML += loadHeader();
+    main.innerHTML += loadFooter();
     document.querySelector(".btn_menu").addEventListener("click", function (e) {
         document.querySelector(".navigation").classList.toggle("navigation_mobil");
-
+       
     });
     main.appendChild(car1.section);
     main.appendChild(car2.section);
@@ -305,9 +303,9 @@ function loadHeader() {
                 <li ><a  href ="entradas.html"  class="pagina">Log out</li></a> 
                 <hr>
                 <ul>
-                    <i class="fab fa-facebook-square"></i>
-                    <i class="fab fa-instagram-square" ></i>
-                    <i class="fab fa-twitter-square"></i>
+                    <i class="fa-brands fa-square-facebook"></i>
+                    <i class="fa-brands fa-instagram"></i>
+                    <i class="fa-brands fa-square-twitter"></i>
                 </ul>
             </ul>
         </nav>
@@ -344,8 +342,51 @@ function loadHeader() {
         </div>
     </div>
 </section>`;
+
 }
 
 function loadFooter() {
-    // TODO
+    return  ` <footer>
+    <ul>
+        <h2>Categories</h2>
+        <li>Action</li>
+        <li>Adventure</li>
+        <li>Racing</li>
+        <li>Sports</li>
+        <li>Puzzle</li>
+        <li>Platforms</li>
+        <li>Simulation</li>
+    </ul>
+    <ul >
+        <h2>Account</h2>
+        <li>My Profile</li>
+        <li>Billing Information</li>
+        <li>Reset Password</li>
+        <li>My Games</li>
+        <li>Purchase History</li>
+        <li>Puzzle</li>
+        <li>Cart</li>
+    </ul>
+    <ul>
+        <h2>Help</h2>
+        <li>Terms of Service</li>
+        <li>Refund Policy</li>
+        <li>FAQs</li>
+        <li>Report a bug</li>
+    </ul>
+    <ul>
+        <h2> About us</h2>
+        <li>Some address, some province</li>
+        <li>That Nice Building, 3rd floor</li>
+        <li>Contact</li>
+        <li>Who We Are</li>
+        <li>Our Team</li>
+        <li>Simulation</li>
+        <ul>
+            <i class="fa-brands fa-square-facebook"></i>
+            <i class="fa-brands fa-instagram"></i>
+            <i class="fa-brands fa-square-twitter"></i>
+        </ul>
+    </ul>
+</footer>`;
 }
