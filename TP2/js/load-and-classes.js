@@ -269,6 +269,10 @@ function loadContent() {
         document.querySelector(".navigation").classList.toggle("navigation_mobil");
 
     });
+    document.querySelector(".btn_sub_menu").addEventListener("click", function (e) {
+        document.querySelector(".sub_menu_display").classList.toggle("sub_menu");
+
+    });
     main.appendChild(car1.section);
     main.appendChild(car2.section);
     main.appendChild(car3.section);
@@ -280,10 +284,22 @@ function loadHeader() {
         <img src="isset/tpe-interfaces-logo-grey 1.svg" alt="">
         <nav class="nav">
             <ul>
-                <li>Home</li>
-                <li>Categories</li>
-                <li>News</li>
+              
+                <li><a>Home</a></li>
+                <li> <a class="btn_sub_menu">Categories <i class="fa-solid fa-chevron-down"></i></a></li>
+                <li> <a>News</a></li>
+               
             </ul>
+            <ul class="sub_menu_display">
+                <li>Action</li>
+                <li>Adventure</li>
+                <li>Racing</li>
+                <li>Sports</li>
+                <li>Puzzle</li>
+                <li>Platforms</li>
+                <li>Simulation</li>
+            </ul>
+          
         </nav>
         <div class="cart-icon">
             <i class="fa-solid fa-cart-shopping"></i>
@@ -295,11 +311,11 @@ function loadHeader() {
             <ul class="navigation">
                 <li ><h2>ALEX</h2></li> 
                 <hr>
-                <li ><a  href ="suscripcion.html"  class="pagina">My profile</li></a> 
-                <li ><a  href ="tabla_posiciones.html"  class="pagina">Acount</li></a> 
-                <li ><a  href ="entradas.html"  class="pagina">My game library</li></a> 
+                <li >My profile</li> 
+                <li >Acount</li>
+                <li >My game library</li>
                 <hr>
-                <li ><a  href ="entradas.html"  class="pagina">Log out</li></a> 
+                <li >Log out</li>
                 <hr>
                 <ul>
                     <i class="fa-brands fa-square-facebook"></i>
@@ -344,46 +360,3 @@ function loadHeader() {
 
 }
 
-function loadFooter() {
-    return  `<footer>
-            <h2>Categories</h2>
-        <ul>
-            <li>Action</li>
-            <li>Adventure</li>
-            <li>Racing</li>
-            <li>Sports</li>
-            <li>Puzzle</li>
-            <li>Platforms</li>
-            <li>Simulation</li>
-        </ul>
-            <h2>Account</h2>
-        <ul >
-            <li>My Profile</li>
-            <li>Billing Information</li>
-            <li>Reset Password</li>
-            <li>My Games</li>
-            <li>Purchase History</li>
-            <li>Puzzle</li>
-            <li>Cart</li>
-        </ul>
-            <h2>Help</h2>
-        <ul>
-            <li>Terms of Service</li>
-            <li>Refund Policy</li>
-            <li>FAQs</li>
-            <li>Report a bug</li>
-        </ul>
-            <h2> About us</h2>
-        <ul>
-            <li>Some address, some province</li>
-            <li>That Nice Building, 3rd floor</li>
-            <li>Contact</li>
-            <li>Who We Are</li>
-            <li>Our Team</li>
-            <li>Simulation</li>
-        </ul>
-                            <i class="fa-brands fa-square-facebook"></i>
-                            <i class="fa-brands fa-instagram"></i>
-                            <i class="fa-brands fa-square-twitter"></i>
-    </footer>`;
-}
