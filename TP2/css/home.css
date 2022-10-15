@@ -17,3 +17,38 @@ h2 {
     max-height: 33px;
     max-width: 33px;
 }
+
+.added-to-cart {
+    border-radius: 50%;
+    left: 75%;
+}
+
+.check-text {
+    font-family: 'Montserrat', sans-serif;
+    font-style: italic;
+    color: white;
+    margin: 0;
+    margin-block-start: 0;
+    margin-block-end: 0;
+}
+
+.cart-icon-container {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+}
+
+.add-to-cart-icon {
+    height: 7.2%;
+    width: 10%;
+    position: relative;
+    bottom: 62%;
+    left: 90%;
+    z-index: 200;
+}
+
+.game-card-image:hover, .card-game:hover .game-card-image {
+    position: relative;
+    z-index: 100;
+    right: 10%;
+}

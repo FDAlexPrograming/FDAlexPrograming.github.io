@@ -19,7 +19,10 @@ function increasePercentage(indicator) {
         indicator.classList.add("hidden");
         indicator.parentElement.classList.add("hidden");
         document.getElementsByTagName("footer").item(0).classList.remove("hidden");
+        document.getElementsByTagName("header").item(0).classList.remove("hidden");
         loadContent();
+        document.getElementsByClassName("news-btn-nav").item(0).addEventListener("click", loadNews);
+        document.getElementsByClassName("home-btn-nav").item(0).addEventListener("click", loadContent);
     }
 }
 
@@ -129,6 +132,7 @@ class Card {
         this.card = document.createElement("div");
         this.card.classList.add("card-game");
         let img = document.createElement("img");
+        img.classList.add("game-card-image");
         img.src=image;
         img.alt = `${this.title} image`;
         let container = document.createElement("div");
@@ -143,27 +147,37 @@ class Card {
         let play = document.createElement("button");
         play.classList.add("play");
         play.textContent = (price === "0" ? "Play" : "Buy");
+        // let cartIconContainer = document.createElement("div");
+        // cartIconContainer.classList.add("cart-icon-container", "hidden");
+        let cartIcon = document.createElement("img");
+        // let checkText = document.createElement("p");
+        // checkText.textContent = "Added to cart";
+        // checkText.classList.add("hidden", "check-text");
+        cartIcon.src="./isset/cart-icon.svg";
+        cartIcon.classList.add("hidden", "add-to-cart-icon");
+        cartIcon.addEventListener("click", () => {
+            cartIcon.classList.add("added-to-cart");
+            cartIcon.src="./images/check1.png";
+            // checkText.classList.remove("hidden");
+        });
+        this.card.addEventListener("mouseenter", () => {
+            cartIcon.classList.remove("hidden");
+            // cartIconContainer.classList.remove("hidden")
+        });
+        this.card.addEventListener("mouseleave", () => {
+            cartIcon.classList.add("hidden");
+            // cartIconContainer.classList.add("cart-icon-container", "hidden");
+        });
 
+        // cartIconContainer.appendChild(cartIcon);
+        // cartIconContainer.appendChild(checkText);
         buy.appendChild(priceText);
         buy.appendChild(play);
         container.appendChild(h3);
         container.appendChild(buy);
+        this.card.appendChild(cartIcon);
         this.card.appendChild(img);
         this.card.appendChild(container);
-    }
-
-    getView() {
-        return `<div class="card-game">
-<!--                    <img src="isset/cart-icon.svg" class="cart-button" alt="add-to-cart image">-->
-                    <img src="${this.imageURI}" alt="${this.title} image">
-                    <div class="container">
-                        <h3>${this.title}</h3>
-                        <div class="buy">
-                            <p class="price-text">${this.price === 0 ? "Free" : this.price}</p>
-                            <button class="play">${this.price === 0 ? "Play" : "Buy"}</button>
-                        </div>
-                    </div>
-                </div>`;
     }
 
 }
@@ -183,10 +197,6 @@ class Carousel {
     constructor(id, sectionTitle, cards) {
         this.id = id;
         this.sectionTitle = sectionTitle;
-        // this.cards = "";
-        // for (let card of cards) {
-        //     // this.cards += card.getView();
-        // }
         this.section = document.createElement("section");
         this.section.classList.add("game-section");
         this.buttonLeft = document.createElement("button");
@@ -219,22 +229,6 @@ class Carousel {
         this.section.appendChild(this.wrapperScroll);
         this.wrapperScroll.appendChild(this.scrollingWrapperCard);
         this.section.appendChild(btns);
-    }
-
-    getView() {
-
-        return `<section>
-                    <div class="wrapper-scroll">
-                        <h1>${this.sectionTitle}</h1>
-                        <div class="scrolling-wrapper-card" id="${this.id}">
-                            ${this.cards}
-                        </div>
-                    </div>
-                    <div class="btns">
-                        <button onclick="scrollCarousel(${this.id})"><i class="fa-solid fa-chevron-left"></i></button>
-                        <button><i class="fa-solid fa-chevron-right"></i></button>
-                    </div>
-                </section>`;
     }
 
     scrollCarousel(value) {
@@ -276,55 +270,13 @@ function loadContent() {
     main.appendChild(car1.section);
     main.appendChild(car2.section);
     main.appendChild(car3.section);
-    // main.innerHTML += car1.getView();
+    for (let playButton of document.getElementsByClassName("play")) {
+        playButton.addEventListener("click", loadGame);
+    }
 }
 
 function loadHeader() {
-    return `<header>
-        <img src="isset/tpe-interfaces-logo-grey 1.svg" alt="">
-        <nav class="nav">
-            <ul>
-              
-                <li><a>Home</a></li>
-                <li> <a class="btn_sub_menu">Categories <i class="fa-solid fa-chevron-down"></i></a></li>
-                <li> <a>News</a></li>
-               
-            </ul>
-            <ul class="sub_menu_display">
-                <li>Action</li>
-                <li>Adventure</li>
-                <li>Racing</li>
-                <li>Sports</li>
-                <li>Puzzle</li>
-                <li>Platforms</li>
-                <li>Simulation</li>
-            </ul>
-          
-        </nav>
-        <div class="cart-icon">
-            <i class="fa-solid fa-cart-shopping"></i>
-        </div>
-        <div class="menu-div">
-            <a class="btn_menu"><i class="fas fa-bars"></i></a>
-        </div>
-        <nav class="menu">
-            <ul class="navigation">
-                <li ><h2>ALEX</h2></li> 
-                <hr>
-                <li >My profile</li> 
-                <li >Acount</li>
-                <li >My game library</li>
-                <hr>
-                <li >Log out</li>
-                <hr>
-                <ul>
-                    <i class="fa-brands fa-square-facebook"></i>
-                    <i class="fa-brands fa-instagram"></i>
-                    <i class="fa-brands fa-square-twitter"></i>
-                </ul>
-            </ul>
-        </nav>
-    </header>
+    return `
     <section>
         <img src="isset/background.jpg" alt="">
     
