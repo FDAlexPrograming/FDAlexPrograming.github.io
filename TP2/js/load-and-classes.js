@@ -129,6 +129,7 @@ class Card {
         this.card = document.createElement("div");
         this.card.classList.add("card-game");
         let img = document.createElement("img");
+        img.classList.add("game-card-image");
         img.src=image;
         img.alt = `${this.title} image`;
         let container = document.createElement("div");
@@ -143,11 +144,35 @@ class Card {
         let play = document.createElement("button");
         play.classList.add("play");
         play.textContent = (price === "0" ? "Play" : "Buy");
+        // let cartIconContainer = document.createElement("div");
+        // cartIconContainer.classList.add("cart-icon-container", "hidden");
+        let cartIcon = document.createElement("img");
+        // let checkText = document.createElement("p");
+        // checkText.textContent = "Added to cart";
+        // checkText.classList.add("hidden", "check-text");
+        cartIcon.src="./isset/cart-icon.svg";
+        cartIcon.classList.add("hidden", "add-to-cart-icon");
+        cartIcon.addEventListener("click", () => {
+            cartIcon.classList.add("added-to-cart");
+            cartIcon.src="./images/check1.png";
+            // checkText.classList.remove("hidden");
+        });
+        this.card.addEventListener("mouseenter", () => {
+            cartIcon.classList.remove("hidden");
+            // cartIconContainer.classList.remove("hidden")
+        });
+        this.card.addEventListener("mouseleave", () => {
+            cartIcon.classList.add("hidden");
+            // cartIconContainer.classList.add("cart-icon-container", "hidden");
+        });
 
+        // cartIconContainer.appendChild(cartIcon);
+        // cartIconContainer.appendChild(checkText);
         buy.appendChild(priceText);
         buy.appendChild(play);
         container.appendChild(h3);
         container.appendChild(buy);
+        this.card.appendChild(cartIcon);
         this.card.appendChild(img);
         this.card.appendChild(container);
     }

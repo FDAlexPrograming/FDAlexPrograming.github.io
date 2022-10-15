@@ -147,12 +147,12 @@ section h1{
     box-shadow: 0px 4px 11px #9C7BE1;
 }
 
-.card img,.card-game img{
+.card img,.card-game .game-card-image{
     height: 200px;
     object-fit: contain;
     margin: 0;
 }
-.card-game img{
+.card-game .game-card-image{
     height: 230px;
     object-fit: cover;
 }
@@ -343,7 +343,20 @@ font-size: 2rem;
 margin: 10px 10px 0 0;
 }
 
+@media (max-width: 550px) {
 
+    .wrapper-scroll {
+        padding: 0;
+    }
+
+    .btn-carousel {
+        display: none;
+    }
+
+    footer {
+        justify-content: normal;
+    }
+}
 
 @media (min-width: 550px) {
 
