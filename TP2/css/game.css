@@ -34,6 +34,7 @@
     z-index: 200;
     border-radius: 30px;
     filter: blur(2px);
+    z-index: -1;
 }
 
 .game-front-image-1 {
@@ -139,4 +140,29 @@
 
 .info-box {
     vertical-align: center;
+}
+
+
+.game-info-carousel{
+    height: 300px;
+}
+.game-info-carousel img{
+    height: 200px;
+    width:200px;
+    border-radius: 5px;
+    margin: 30px;
+}
+
+.description-game{
+    font-size: 1.5rem;
+    font-weight: 600;
+    padding: 20px;
+    margin-top: 20px;
+    width: 80%;
+}
+.game-section .news-game-section{
+    overflow: hidden;
+}
+.game-section .news-game-section .wrapper-scroll .scrolling-wrapper-card{
+    height: 400px;
 }

@@ -62,6 +62,7 @@ let gameImages = [
     "./images/game/Rectangle21_1.png",
     "./images/game/Rectangle21_2.png",
     "./images/game/Rectangle21_3.png",
+    "./images/game/Rectangle21_3.png",
 
 ]
 
@@ -86,8 +87,8 @@ async function loadGame(){
     <button class="play game-play-button">Play</button>
 </section>
 <section class="game-section">
-    <div class="game-info-carousel">
-        <div class="info-box">
+    <div class="game-info-carousel ">
+        <div class="info-box description-game">
             <p>Check out this totally cool game, very fun, very classic, best description ever. Don’t forget to leave a comment or review</p>
         </div>
     </div>
