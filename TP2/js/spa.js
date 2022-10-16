@@ -48,10 +48,13 @@ async function loadNews(){
         <span class="dot" onclick="currentSlide(2)"></span>
         <span class="dot" onclick="currentSlide(3)"></span>
     </div>
-    `;
+   `;
+    
     showSlides(1);
     loadWallpaperCarousels();
+    card();
     setInterval(()=> {plusSlides(1);}, 3000);
+
 }
 
 let gameImages = [

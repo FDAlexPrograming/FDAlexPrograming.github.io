@@ -1,12 +1,12 @@
 "use strict";
 
 class CarouselNews extends Carousel {
-
+    
     timerID;
     isMovingRight = true;
 
-    constructor(cards) {
-        super(null, "", cards);
+    constructor(cards,id) {
+        super(id, "", cards);
         this.section.classList.remove("game-section");
         this.section.classList.add("news-game-section");
         this.timerID = setInterval(()=> { this.intervalScroll(8000) }, 5000) ;
@@ -40,18 +40,27 @@ class GameInfoCard {
     description;
     card;
 
-    constructor(title, imageURI, description) {
-        this.img = document.createElement("img");
-        this.img.src = imageURI;
-        this.img.classList.add("game-info-card-image");
-
+    constructor(title, imageURI="", description="") {
+        
         this.card = document.createElement("div");
-        this.card.classList.add("game-info-card", "card-game");
-        this.card.appendChild(this.img);
-
+        
+        if (imageURI !=""){
+            this.card.classList.add("game-info-card", "card-game");
+            this.img = document.createElement("img");
+            this.img.src = imageURI;
+            this.img.classList.add("game-info-card-image");
+            
+            this.card.appendChild(this.img);
+        }else{
+            this.card.classList.add("featured");
+        }
+       
+        
+      
         this.description = document.createElement("p");
         this.description.textContent = description;
         this.description.classList.add("game-info-card-description");
+        
 
         this.title = document.createElement("h5");
         this.title.textContent = title;
@@ -60,7 +69,9 @@ class GameInfoCard {
         let infoBox = document.createElement("div");
         infoBox.classList.add("info-box");
         infoBox.appendChild(this.title);
+        if (description !=""){
         infoBox.appendChild(this.description);
+        }
 
         this.card.appendChild(infoBox);
 
@@ -110,6 +121,40 @@ let gameInfoCards = [
         "description": "The Headcrab is an alien parasite."
     }
 ]
+
+let info = [{
+    "title": "First-person shooter (FPS)",
+},
+{
+    "title": "Puzzles",
+},
+{
+    "title": "Multiplayer",
+},
+{
+    "title": "Online PvP",
+},
+{
+    "title": "Valve Anti-Cheat enabled",
+},
+{
+    "title": " Single-player",
+}
+
+]
+
+function card() {
+   
+    let main = document.getElementById("main-container");
+
+    let infoCards = [];
+    for (let c of info) {
+        let card = new GameInfoCard(c.title, c.imageURI, c.description);
+        infoCards.push(card.card);
+    }
+    let carousel2 = new CarouselNews(infoCards,"features");
+    main.appendChild(carousel2.section);
+}
 
 function loadWallpaperCarousels() {
     // let cards = [];

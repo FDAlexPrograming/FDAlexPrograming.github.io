@@ -217,11 +217,19 @@ class Carousel {
         this.buttonLeft.addEventListener('click', () => { this.scrollCarousel(-400)});
         this.buttonRight.addEventListener('click', () => { this.scrollCarousel(400)});
         this.wrapperScroll = document.createElement("div");
-        this.wrapperScroll.classList.add("wrapper-scroll");
+        if (id != "features"){
+
+            this.wrapperScroll.classList.add("wrapper-scroll");
+        }
         this.h1 = document.createElement("h1");
         this.h1.textContent = sectionTitle;
         this.scrollingWrapperCard = document.createElement("div");
-        this.scrollingWrapperCard.classList.add("scrolling-wrapper-card");
+        if (id != "features"){
+
+            this.scrollingWrapperCard.classList.add("scrolling-wrapper-card");
+        }else{
+            this.scrollingWrapperCard.classList.add("features");
+        }
         this.scrollingWrapperCard.appendChild(this.h1);
         // this.scrollingWrapperCard.innerHTML = this.cards;
         for (let card of cards) {
@@ -230,7 +238,10 @@ class Carousel {
         }
         this.section.appendChild(this.wrapperScroll);
         this.wrapperScroll.appendChild(this.scrollingWrapperCard);
-        this.section.appendChild(btns);
+        if (id != "features"){
+
+            this.section.appendChild(btns);
+        }
     }
 
     scrollCarousel(value) {
@@ -262,14 +273,6 @@ function loadContent() {
     let main = document.querySelector("#main-container");
     main.innerHTML = "";
     main.innerHTML += loadHeader();
-    document.querySelector(".btn_menu").addEventListener("click", function (e) {
-        document.querySelector(".navigation").classList.toggle("navigation_mobil");
-
-    });
-    document.querySelector(".btn_sub_menu").addEventListener("click", function (e) {
-        document.querySelector(".sub_menu_display").classList.toggle("sub_menu");
-
-    });
     main.appendChild(car1.section);
     main.appendChild(car2.section);
     main.appendChild(car3.section);
@@ -314,4 +317,13 @@ function loadHeader() {
 </section>`;
 
 }
+
+document.querySelector(".btn_menu").addEventListener("click", function (e) {
+    document.querySelector(".navigation").classList.toggle("navigation_mobil");
+
+});
+document.querySelector(".btn_sub_menu").addEventListener("click", function (e) {
+    document.querySelector(".sub_menu_display").classList.toggle("sub_menu");
+
+});
 
