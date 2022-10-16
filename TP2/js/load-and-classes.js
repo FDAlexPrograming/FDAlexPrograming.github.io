@@ -14,7 +14,7 @@ function firstLoad() {
 
 function increasePercentage(indicator) {
     indicator.textContent = `${loadingPercentage++}%`;
-    if (loadingPercentage >= 100) {
+    if (loadingPercentage >= 100 || true) { // TODO REMOVE THIS "OR TRUE"
         clearInterval(loaderID);
         indicator.classList.add("hidden");
         indicator.parentElement.classList.add("hidden");
@@ -23,6 +23,7 @@ function increasePercentage(indicator) {
         loadContent();
         document.getElementsByClassName("news-btn-nav").item(0).addEventListener("click", loadNews);
         document.getElementsByClassName("home-btn-nav").item(0).addEventListener("click", loadContent);
+        document.getElementsByClassName("logo").item(0).addEventListener("click", loadContent);
     }
 }
 
@@ -185,7 +186,6 @@ class Card {
 class Carousel {
 
     id;
-    cards;
     sectionTitle;
     wrapperScroll;
     h1;
@@ -258,6 +258,7 @@ function loadContent() {
     let car2 = new Carousel("car3", "Paid News", paidNews);
     let car3 = new Carousel("car2", "Most Played", mostPlayed);
     let main = document.querySelector("#main-container");
+    main.innerHTML = "";
     main.innerHTML += loadHeader();
     document.querySelector(".btn_menu").addEventListener("click", function (e) {
         document.querySelector(".navigation").classList.toggle("navigation_mobil");

@@ -47,6 +47,22 @@ h2 {
     z-index: 200;
 }
 
+.add-to-cart-icon:hover {
+    cursor: pointer;
+}
+
+.play:hover {
+    cursor: pointer;
+}
+
+.nav {
+    cursor: pointer;
+}
+
+.logo:hover {
+    cursor: pointer;
+}
+
 .game-card-image:hover, .card-game:hover .game-card-image {
     position: relative;
     z-index: 100;

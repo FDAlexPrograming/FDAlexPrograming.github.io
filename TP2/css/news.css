@@ -1,0 +1,160 @@
+.front-wallpaper {
+    width: 700px;
+    height: 247px;
+    object-fit: fill;
+    border-radius: 30px;
+    position: relative;
+    left: 127px;
+}
+
+.front-news-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    position: relative;
+    bottom: 275px;
+    z-index: 200;
+}
+
+.front-news-container h1, .front-news-container h2 {
+    margin-top: 0;
+    margin-bottom: 0;
+    position: relative;
+    z-index: 200;
+    right: 20px;
+}
+
+.front-news-container h2 {
+    background: #000000;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    width: 624px;
+    left: 70px;
+    text-align: center;
+    transition: background-color 1s ease-out 35ms;
+    font-weight: lighter;
+}
+
+.front-news-container h1 {
+    padding: 5px;
+    background: #393939;
+    position:relative;
+    z-index: 300;
+    border-radius: 7px;
+    left: 304px;
+    transition: background-color 1s ease-out 50ms;
+    min-width: 235px;
+}
+
+.news-front-price {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    transition: background-color 1s ease-out 50ms;
+}
+
+.news-front-price:hover h1 {
+    background-color: #000000;
+    cursor: pointer;
+}
+
+.news-front-price:hover h2 {
+    background-color: #393939;
+    cursor: pointer;
+}
+
+.game-info-section-news-description {
+    background: #262222;
+    border-radius: 25px;
+    padding: 5px 10px;
+}
+
+.news-description {
+    margin-left: 50px;
+    margin-right: 50px;
+    position: absolute;
+    top: 900px;
+}
+
+.background-wallpaper {
+    width: 100%;
+    position: relative;
+    z-index: 100;
+    height: 750px !important;
+}
+
+.wallpaper-section {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.wallpaper-section h3 {
+    margin-top: 0;
+    top: 105px;
+    position: absolute;
+    z-index: 300;
+    font-style: italic;
+    margin-bottom: 0;
+    left: 20px;
+}
+
+.route {
+    margin: 0 0 0 120px;
+}
+
+.game-info-card {
+    width: 240px;
+}
+
+.game-info-card-image {
+    max-height: 365px;
+}
+
+.news-game-section .scrolling-wrapper-card {
+    height: 600px;
+}
+
+.news-game-section .scrolling-wrapper-card .card-game {
+    height: 550px;
+}
+
+.card-wallpaper {
+    height: 550px !important;
+    width: 900px !important;
+    object-fit: contain;
+    overflow: hidden;
+}
+
+.active, .dot:hover {
+    background-color: #717171;
+}
+
+.info-box p, .info-box h5 {
+    margin: 0 10px;
+}
+
+.info-box {
+    white-space: normal;
+}
+
+.fade {
+    -webkit-animation-name: fade;
+    -webkit-animation-duration: 1.5s;
+    animation-name: fade;
+    animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+    from {opacity: .4}
+    to {opacity: 1}
+}
+
+@keyframes fade {
+    from {opacity: .4}
+    to {opacity: 1}
+}
+
+.slide {
+    justify-content: center;
+}
