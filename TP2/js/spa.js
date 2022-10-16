@@ -2,16 +2,6 @@
 
 
 async function loadNews(){
-    // try {
-    //     await fetch('./pages/news.html').then(response =>{
-    //         response.text().then(text => {
-    //             document.getElementById('main-container').innerHTML = text;
-    //         })
-    //     })
-    // }
-    // catch (error){
-    //     console.log(error)
-    // }
     document.getElementById("main-container").innerHTML = `
     <h4 class="route">> News > </h4>
     <section class="wallpaper-section">
@@ -64,15 +54,65 @@ async function loadNews(){
     setInterval(()=> {plusSlides(1);}, 3000);
 }
 
+let gameImages = [
+    "./images/game/Rectangle21.png",
+    "./images/game/Rectangle21_1.png",
+    "./images/game/Rectangle21_2.png",
+    "./images/game/Rectangle21_3.png",
+
+]
+
 async function loadGame(){
-    try {
-        await fetch('./pages/game.html').then(response =>{
-            response.text().then(text => {
-                document.getElementById('main-container').innerHTML = text;
-            })
-        })
+    document.getElementById("main-container").innerHTML = `
+        <div class="route-container route">
+            <h4 onclick="loadContent()">> Home </h4>
+            <h4 onclick="loadContent()">> Games </h4>
+            <h4>> Tabletop </h4>
+            <h4>> 4-In-a-Row: Dragon Ball > </h4>
+        </div>
+        <div class="game-title-container">
+            <h1>4-In-a-Row: Dragon Ball</h1>
+            <h3 class="community-hub-button">
+                Community Hub
+            </h3>
+        </div>
+
+<section class="game-section">
+    <img class="game-background-wallpaper" src="./images/game/Rectangle21_2.png" alt="Game wallpaper">
+    <img class="game-front-image-1" src="./images/game/front-wallpaper.png">
+    <button class="play game-play-button">Play</button>
+</section>
+<section class="game-section">
+    <div class="game-info-carousel">
+        <div class="info-box">
+            <p>Check out this totally cool game, very fun, very classic, best description ever. Don’t forget to leave a comment or review</p>
+        </div>
+    </div>
+</section>
+
+    <div class="review-title"><h1>Leave a Review..</h1></div>
+<section class="review-box-section">
+    <div class="form-section">
+        <div class="comment-form-wrapper">
+            <input type="text" class="comment-write-box">
+            <div class="like-dislike-container">
+                <img class="like-button" src="./images/game/thumbs-up.png">
+                <img class="dislike-button" src="./images/game/thumbs-down.png">
+            </div>
+        </div>
+        <button class="send-button" type="button">Send</button>
+    </div>
+</section>
+
+        `;
+
+    let cards = [];
+    for (let img of gameImages) {
+        cards.push(new WallpaperCard(img).img);
     }
-    catch (error){
-        console.log(error)
+    let gameInfo = new CarouselNews(cards);
+    for (let card of gameInfo.cards) {
+        card.classList.remove("card-wallpaper");
     }
+    document.getElementsByClassName("game-info-carousel").item(0).appendChild(gameInfo.section);
 }

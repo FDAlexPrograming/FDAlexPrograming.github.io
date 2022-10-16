@@ -1,0 +1,142 @@
+.route-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+}
+
+.community-hub-button {
+    text-align: center;
+    align-self: center;
+    padding: 5px 10px;
+    color: #949494;
+    background: #4E3968;
+    border-radius: 15px;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    transition: all 1s ease-in-out 35ms;
+}
+
+.community-hub-button:hover {
+    color: white;
+    background: #6D54B1;
+}
+
+.game-title-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-right: 30px;
+    margin-left: 30px;
+}
+
+.game-background-wallpaper {
+    height: 650px;
+    position: relative;
+    z-index: 200;
+    border-radius: 30px;
+    filter: blur(2px);
+}
+
+.game-front-image-1 {
+    width: 350px;
+    position: absolute;
+    z-index: 300;
+    height: 300px;
+    bottom: 50%;
+    left: 40%;
+    border-radius: 15px;
+    object-fit: fill;
+}
+
+.game-section {
+    margin-right: 30px;
+    margin-left: 30px;
+}
+
+.route-container h4 {
+    margin: 0 5px;
+}
+
+.game-play-button {
+    position: absolute;
+    z-index: 350;
+    bottom: 60%;
+    left: 40%;
+    height: 60px;
+    width: 350px;
+    font-size: larger;
+}
+
+.like-button, .dislike-button {
+    height: 40px;
+    width: 40px;
+    object-fit: fill;
+
+}
+
+.like-dislike-container {
+    display: flex;
+    flex-direction: column;
+    margin: 0 10px;
+}
+
+.form-section {
+    margin: 5px;
+}
+
+.comment-form-wrapper {
+    display: flex;
+    flex-direction: row;
+
+}
+
+.review-box-section {
+    background-color: #1E1E1E;
+    border-radius: 20px;
+    margin: 0 25%;
+}
+
+.review-title h1 {
+    margin: 30px 25% 0;
+    font-style: italic;
+}
+
+.comment-write-box {
+    width: 100%;
+    background-color: #0D0A12;
+    margin-left: 10px;
+    margin-top: 10px;
+    color: white;
+    white-space: normal;
+    border: 0;
+    border-radius: 20px;
+    text-align: left;
+    vertical-align: center;
+}
+
+.send-button {
+    margin: 10px;
+    width: 92%;
+    font-size: large;
+    font-weight: bold;
+    height: 40px;
+    border-radius: 20px;
+    background-color: #6D54B1;
+    border: 0;
+    transition: background-color 1s ease-in-out 25ms;
+}
+
+.send-button:hover {
+    background-color: #9C7BE1;
+}
+
+.game-info-carousel {
+    padding: 5px 10px;
+    background-color: #1E1E1E;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: row;
+}
+
+.info-box {
+    vertical-align: center;
+}

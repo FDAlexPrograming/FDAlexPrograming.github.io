@@ -193,6 +193,7 @@ class Carousel {
     buttonRight;
     scrollingWrapperCard;
     section;
+    cards = [];
 
     constructor(id, sectionTitle, cards) {
         this.id = id;
@@ -225,6 +226,7 @@ class Carousel {
         // this.scrollingWrapperCard.innerHTML = this.cards;
         for (let card of cards) {
             this.scrollingWrapperCard.appendChild(card);
+            this.cards.push(card);
         }
         this.section.appendChild(this.wrapperScroll);
         this.wrapperScroll.appendChild(this.scrollingWrapperCard);
