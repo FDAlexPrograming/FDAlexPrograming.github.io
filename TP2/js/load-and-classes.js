@@ -30,7 +30,7 @@ function increasePercentage(indicator) {
 let games = [
     {
         "title": "Star Wars: Squadrons",
-        "imageURI": "./images/game1_1_2.png",
+        "imageURI":   "./images/game/Rectangle21_3.png",
         "price": "0"
     },
     {

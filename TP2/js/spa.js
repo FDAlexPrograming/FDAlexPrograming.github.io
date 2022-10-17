@@ -108,6 +108,53 @@ async function loadGame(){
     </div>
 </section>
 
+
+<section class="review-coments">
+    <div class="coments">
+        <p><strong>JUANPAONE0097</strong>  • 2 month(s) ago.</P>
+        <br>
+        <p>holaa links MF de P2P caidos!</p>
+        <br>
+        <p class="report-coments">• Reply • Report</p>
+    </div>
+    <div class="coments">
+    <p><strong>JUANPAONE0097</strong>  • 2 month(s) ago.</P>
+    <br>
+    <p>holaa links MF de P2P caidos!</p>
+    <br>
+    <p class="report-coments">• Reply • Report</p>
+</div>
+<div class="coments">
+<p><strong>JUANPAONE0097</strong>  • 2 month(s) ago.</P>
+<br>
+<p>holaa links MF de P2P caidos!</p>
+<br>
+<p class="report-coments">• Reply • Report</p>
+</div>
+<div class="coments">
+<p><strong>JUANPAONE0097</strong>  • 2 month(s) ago.</P>
+<br>
+<p>holaa links MF de P2P caidos!</p>
+<br>
+<p class="report-coments">• Reply • Report</p>
+</div>
+<div class="coments">
+<p><strong>JUANPAONE0097</strong>  • 2 month(s) ago.</P>
+<br>
+<p>holaa links MF de P2P caidos!</p>
+<br>
+<p class="report-coments">• Reply • Report</p>
+</div>
+<div class="coments">
+<p><strong>JUANPAONE0097</strong>  • 2 month(s) ago.</P>
+<br>
+<p>holaa links MF de P2P caidos!</p>
+<br>
+<p class="report-coments">• Reply • Report</p>
+</div>
+   
+</section>  
+
         `;
 
     let cards = [];
