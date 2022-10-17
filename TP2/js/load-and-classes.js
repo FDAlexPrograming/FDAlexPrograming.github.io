@@ -9,7 +9,7 @@ function firstLoad() {
     document.getElementsByTagName("footer").item(0).classList.add("hidden");
     let indicator = document.querySelector("#loader-percentage");
     indicator.textContent = "0%";
-    loaderID = setInterval(()=> { increasePercentage(indicator); }, 5000);
+    loaderID = setInterval(()=> { increasePercentage(indicator); }, 50);
 }
 
 function increasePercentage(indicator) {
