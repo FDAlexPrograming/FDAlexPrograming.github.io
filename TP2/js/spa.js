@@ -81,7 +81,7 @@ async function loadGame(){
             </h3>
         </div>
 
-<section class="game-section">
+<section class="game-section game-section-container">
     <img class="game-background-wallpaper" src="./images/game/Rectangle21_2.png" alt="Game wallpaper">
     <img class="game-front-image-1" src="./images/game/front-wallpaper.png">
     <button class="play game-play-button">Play</button>
