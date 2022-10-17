@@ -42,7 +42,7 @@
     position: absolute;
     z-index: 300;
     height: 300px;
-    bottom: 50%;
+    bottom: 60%;
     left: 40%;
     border-radius: 15px;
     object-fit: fill;
@@ -60,7 +60,7 @@
 .game-play-button {
     position: absolute;
     z-index: 350;
-    bottom: 60%;
+    bottom: 67%;
     left: 40%;
     height: 60px;
     width: 350px;
