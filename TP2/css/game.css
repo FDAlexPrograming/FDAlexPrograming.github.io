@@ -194,3 +194,17 @@
 .report-coments{
    padding-left: 20px;
 }
+
+.response{
+    margin-left: 150px;
+}
+
+.like-button-coments,.dislike-button-coments{
+    width: 20px;
+    height: 20px;
+    margin-left: 85%;
+}
+.dislike-button-coments{
+    margin-left: 90%;
+    margin-top: -20px;
+}

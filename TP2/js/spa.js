@@ -117,41 +117,46 @@ async function loadGame(){
         <br>
         <p class="report-coments">• Reply • Report</p>
     </div>
+
+        <img class="like-button-coments" src="./images/game/thumbs-up.png">
+        <img class="dislike-button-coments" src="./images/game/thumbs-down.png">
+
     <div class="coments">
-    <p><strong>JUANPAONE0097</strong>  • 2 month(s) ago.</P>
-    <br>
-    <p>holaa links MF de P2P caidos!</p>
-    <br>
-    <p class="report-coments">• Reply • Report</p>
-</div>
-<div class="coments">
-<p><strong>JUANPAONE0097</strong>  • 2 month(s) ago.</P>
-<br>
-<p>holaa links MF de P2P caidos!</p>
-<br>
-<p class="report-coments">• Reply • Report</p>
-</div>
-<div class="coments">
-<p><strong>JUANPAONE0097</strong>  • 2 month(s) ago.</P>
-<br>
-<p>holaa links MF de P2P caidos!</p>
-<br>
-<p class="report-coments">• Reply • Report</p>
-</div>
-<div class="coments">
-<p><strong>JUANPAONE0097</strong>  • 2 month(s) ago.</P>
-<br>
-<p>holaa links MF de P2P caidos!</p>
-<br>
-<p class="report-coments">• Reply • Report</p>
-</div>
-<div class="coments">
-<p><strong>JUANPAONE0097</strong>  • 2 month(s) ago.</P>
-<br>
-<p>holaa links MF de P2P caidos!</p>
-<br>
-<p class="report-coments">• Reply • Report</p>
-</div>
+        <p><strong>RIUHAYABUZA</strong>  • 4 month(s) ago.</P>
+        <br>
+        <p> cual es la diferencia entre versiones por que una dice p2p</p>
+        <br>
+        <p class="report-coments">• Reply • Report</p>
+    </div>
+    <img class="like-button-coments" src="./images/game/thumbs-up.png">
+    <img class="dislike-button-coments" src="./images/game/thumbs-down.png">
+    <div class="coments">
+        <p><strong>NUMBERSIX</strong>  • 8 month(s) ago.</P>
+        <br>
+        <p>Los links de mediafire en la version P2P estan caidos al parecer</p>
+        <br>
+        <p class="report-coments">• Reply • Report</p>
+    </div>
+    <img class="like-button-coments" src="./images/game/thumbs-up.png">
+    <img class="dislike-button-coments" src="./images/game/thumbs-down.png">
+    <div class="coments response">
+        <p><strong>KHRIZ -> NUMBERSIX</strong>  • 2 month(s) ago.</P>
+        <br>
+        <p>Actualizado!</p>
+        <br>
+        <p class="report-coments">• Reply • Report</p>
+    </div>
+    <img class="like-button-coments" src="./images/game/thumbs-up.png">
+    <img class="dislike-button-coments" src="./images/game/thumbs-down.png">
+    <div class="coments">
+        <p><strong>RODMENTOR</strong>  • 2 month(s) ago.</P>
+        <br>
+        <p>falta el archivo 5!!</p>
+        <br>
+        <p class="report-coments">• Reply • Report</p>
+    </div>
+    <img class="like-button-coments" src="./images/game/thumbs-up.png">
+    <img class="dislike-button-coments" src="./images/game/thumbs-down.png">
    
 </section>  
 
