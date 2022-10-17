@@ -29,9 +29,14 @@ function increasePercentage(indicator) {
 
 let games = [
     {
-        "title": "Star Wars: Squadrons",
+        "title": "4-In-a-Row: Dragon Ball",
         "imageURI":   "./images/game/Rectangle21_3.png",
         "price": "0"
+    },
+    {
+        "title": "Star Wars: Squadrons",
+        "imageURI":   "./images/game1_1_2.png",
+        "price": "$4.99"
     },
     {
         "title": "Horizon Chase Turbo",

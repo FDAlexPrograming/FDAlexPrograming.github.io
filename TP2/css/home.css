@@ -51,11 +51,7 @@ h2 {
     cursor: pointer;
 }
 
-.play:hover {
-    cursor: pointer;
-}
-
-.nav {
+.play:hover, .btn-carousel:hover, .home-btn-nav:hover, .send-button:hover, .like-button:hover, .dislike-button:hover, .community-hub-button:hover, .route h4:hover {
     cursor: pointer;
 }
 
