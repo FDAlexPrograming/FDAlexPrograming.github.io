@@ -3,7 +3,6 @@
 
 async function loadNews(){
     document.getElementById("main-container").innerHTML = `
-    <link rel="stylesheet" href="css/news.css">
     <h4 class="route">> News > </h4>
     <section class="wallpaper-section">
         <h3>Yes, it's finally here.. Trust me..</h3>
@@ -71,9 +70,6 @@ let gameImages = [
 
 async function loadGame(){
     document.getElementById("main-container").innerHTML = `
-    <link rel="stylesheet" href="css/game.css">
-    <link href="css/litGames.css" rel="stylesheet">
-  
         <div class="route-container route">
             <h4 onclick="loadContent()">> Home </h4>
             <h4 onclick="loadContent()">> Games </h4>
