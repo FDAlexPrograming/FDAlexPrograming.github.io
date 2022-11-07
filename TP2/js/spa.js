@@ -3,6 +3,7 @@
 
 async function loadNews(){
     document.getElementById("main-container").innerHTML = `
+    <link rel="stylesheet" href="css/news.css">
     <h4 class="route">> News > </h4>
     <section class="wallpaper-section">
         <h3>Yes, it's finally here.. Trust me..</h3>
@@ -66,8 +67,13 @@ let gameImages = [
 
 ]
 
+
+
 async function loadGame(){
     document.getElementById("main-container").innerHTML = `
+    <link rel="stylesheet" href="css/game.css">
+    <link href="css/litGames.css" rel="stylesheet">
+  
         <div class="route-container route">
             <h4 onclick="loadContent()">> Home </h4>
             <h4 onclick="loadContent()">> Games </h4>
@@ -80,19 +86,134 @@ async function loadGame(){
                 Community Hub
             </h3>
         </div>
-
-<section class="game-section game-section-container">
+        <div class="hero" id="div-hero-game">
+        <section class="game-section game-section-container">
     <img class="game-background-wallpaper" src="./images/game/Rectangle21_2.png" alt="Game wallpaper">
     <img class="game-front-image-1" src="./images/game/front-wallpaper.png">
-    <button class="play game-play-button">Play</button>
+    <button class="play game-play-button" id="btn-play-cel">play</button>
 </section>
-<section class="game-section">
-    <div class="game-info-carousel ">
-        <div class="info-box description-game">
-            <p>Check out this totally cool game, very fun, very classic, best description ever. Don’t forget to leave a comment or review</p>
+</div>
+
+
+        <div class="hero" id="div-hero-game">
+        <!-- background image -->
+     
+        <div class="hero-title" id="hero-title-jugar">
+            <h1 class="titles"4-In-a-Row: Dragon Ball</h1>
+          
+        </div>
+
+        <div class="hero-title-play" id="hero-title-jugar-opciones">
+            <h1 class="titles">4-In-a-Row: Dragon Ball</h1>
+            <div class="div-btns-play">
+                <div>
+                    <input type="radio" name="dificultad" value="4" id="radio-facil" checked />
+                    <label for="radio-facil">Jugar con 4 </label>
+                    <input type="radio" name="dificultad" value="5" id="radio-moderada" />
+                    <label for="radio-moderada">Jugar con 5 </label>
+                    <input type="radio" name="dificultad" value="6" id="radio-dificil" />
+                    <label for="radio-dificil">Jugar con 6 </label>
+                    <input type="radio" name="dificultad" value="7" id="radio-epica" />
+                    <label for="radio-epica">Jugar con 7 </label>
+                </div>
+                <div class="jugador-seleccion">
+                    <input type="text" class="text-jugador" id="text-jugador1" name="text-jugador1" value="Jugador 1"
+                        placeholder="Jugador 1" />
+                    <div class="leftside">
+                        <label class="labelexpanded">
+                            <input type="radio" name="targetgroup1" checked value="goku">
+                            <div class="radio-btns"> <img src="fichas/goku.png" />
+                            </div>
+                            </input>
+                        </label>
+                        <label class="labelexpanded">
+                            <input type="radio" name="targetgroup1" disabled value="mayinbu">
+                            <div class="radio-btns"> <img src="fichas/mayinbu.png">
+                            </div>
+                            </input>
+                        </label>
+                        <label class="labelexpanded">
+                            <input type="radio" name="targetgroup1" value="picoro">
+                            <div class="radio-btns"> <img src="fichas/picoro.png">
+                            </div>
+                            </input>
+                        </label>
+                        <label class="labelexpanded">
+                            <input type="radio" name="targetgroup1" value="gohan">
+                            <div class="radio-btns"> <img src="fichas/gohan.png">
+                            </div>
+                            </input>
+                        </label>
+                        <label class="labelexpanded">
+                            <input type="radio" name="targetgroup1" value="android 18">
+                            <div class="radio-btns"> <img src="fichas/android 18.png">
+                            </div>
+                            </input>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="jugador-seleccion">
+                    <input type="text" class="text-jugador" id="text-jugador2" name="text-jugador2" value="Jugador 2"
+                        placeholder="Jugador 2" />
+                    <div class="leftside">
+                        <label class="labelexpanded">
+                            <input type="radio" name="targetgroup2" disabled value="goku">
+                            <div class="radio-btns"> <img src="fichas/goku.png" />
+                            </div>
+                            </input>
+                        </label>
+                        <label class="labelexpanded">
+                            <input type="radio" name="targetgroup2" checked value="mayinbu">
+                            <div class="radio-btns"> <img src="fichas/mayinbu.png">
+                            </div>
+                            </input>
+                        </label>
+                        <label class="labelexpanded">
+                            <input type="radio" name="targetgroup2" value="picoro">
+                            <div class="radio-btns"> <img src="fichas/picoro.png">
+                            </div>
+                            </input>
+                        </label>
+                        <label class="labelexpanded">
+                            <input type="radio" name="targetgroup2" value="gohan">
+                            <div class="radio-btns"> <img src="fichas/gohan.png">
+                            </div>
+                            </input>
+                        </label>
+                        <label class="labelexpanded">
+                            <input type="radio" name="targetgroup2" value="android 18">
+                            <div class="radio-btns"> <img src="fichas/android 18.png">
+                            </div>
+                            </input>
+                        </label>
+                    </div>
+                </div>
+                <div>
+                    <button class="item-btn btn-play" id="btn-play-start">Jugar</button>
+                    <button class="item-btn item-btn-bajando" id="btn-play-cancel">Cancel</button>
+                </div>
+            </div>
         </div>
     </div>
-</section>
+
+    <div class="content-canvas">
+        <div class="turno-canvas">
+        </div>
+        <div class="timer-canvas"></div>
+        <div class="btn-canvas">
+            <button class="item-btn btn-play" id="btn-reiniciar">Reiniciar</button>
+            <button class="item-btn item-btn-bajando" id="btn-game-out">Salir</button>
+        </div>
+        <div class="resultado-canvas">
+        </div>
+        <div id="output" style="position:absolute; padding:5px;"></div>
+        <canvas id="canvas" class="canvas"></canvas>
+    </div>
+
+
+
+
 
     <div class="review-title"><h1>Leave a Review..</h1></div>
 <section class="review-box-section">
@@ -160,7 +281,12 @@ async function loadGame(){
    
 </section>  
 
+
+
         `;
+        iniciarPagina();
+
+
 
     let cards = [];
     for (let img of gameImages) {
@@ -171,4 +297,6 @@ async function loadGame(){
         card.classList.remove("card-wallpaper");
     }
     document.getElementsByClassName("game-info-carousel").item(0).appendChild(gameInfo.section);
+
+   
 }

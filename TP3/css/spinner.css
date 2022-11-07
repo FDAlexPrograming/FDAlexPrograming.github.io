@@ -1,0 +1,22 @@
+.loader {
+    border: 16px solid #FFFFFF;
+    border-top: 16px solid #9C7BE1;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 3s linear infinite;
+    margin: 15% auto auto;
+}
+#loader-percentage {
+    margin: auto;
+}
+
+.loader-container {
+    display: flex;
+    flex-direction: column;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
