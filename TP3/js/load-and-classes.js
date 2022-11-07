@@ -344,8 +344,8 @@ function iniciarPagina() {
     const TIEMPO_DE_JUEGO = 300;
     const CANVAS_WIDTH = 725;
     const CANVAS_HEIGHT = 607;
-    const CANVAS_IMG_BACKGROUND = "./isset/Goku.png";
-    const CANVAS_IMG_BOX = "./isset/nube.png";
+    const CANVAS_IMG_BACKGROUND = "../isset/Goku.png";
+    const CANVAS_IMG_BOX = "../isset/nube.png";
 
     let imageFondo = new Image();
     let imagenFicha1 = new Image();
@@ -754,20 +754,14 @@ function iniciarPagina() {
                             let posNueva = {
                                 x: boxSeleccionado.getPosCanvasX() + (boxSeleccionado.getLadoX() / 2),
                                 y: boxSeleccionado.getPosCanvasY() - 1 + ((boxSeleccionado.getLadoY() - arreglo_fichas_j2[y].getRadio()))
-                            }//Si hay que colocar la ficha
-
-                            //Valida si hya un ganador
+                            }
                             validarJugada(boxSeleccionado.getJugador(), validarPosX, validarPosY);
-
                             arreglo_fichas_j2[y].setHabilitada(false);
                             arreglo_fichas_j2[y].setPosicionFinal(posNueva.x, posNueva.y);
-                            //Habilita la siguinte ficha
                             arreglo_fichas_j2[y - 1].setHabilitada(true);
-                            //Si coloca la ficha cambia de turno
                             turno_jugador_1 = !turno_jugador_1;
                             turnoCanvas.innerHTML = 'Juega ' + nombre1;
                         } else {
-                            //Vuelve al origen
                             if (boxSeleccionado == null
                                 && ficha_j2_seleccionada.getId() === arreglo_fichas_j2[y].getId()) {
                                 arreglo_fichas_j2[y].setPosicionInicial();
@@ -954,27 +948,6 @@ function iniciarPagina() {
             y: Math.round(event.clientY - ClientRect.top)
         }
     }
-
-    //Funciones para ver las coordonedas de la posicion del mouse
-    //Habiltar para hacer correcciones viendo la posicion actual del mouse sobre el canvas
-    /*
-    function marcarCoords(output, x, y) {
-        output.innerHTML = ("x: " + x + ", y: " + y);
-        output.style.top = (y + 10) + "px";
-        output.style.left = (x + 10) + "px";
-        output.style.backgroundColor = "#FFF";
-        output.style.border = "1px solid #d9d9d9"
-        canvas.style.cursor = "pointer";
-    }
-    function limpiarCoords(output) {
-        output.innerHTML = "";
-        output.style.top = 0 + "px";
-        output.style.left = 0 + "px";
-        output.style.backgroundColor = "transparent"
-        output.style.border = "none";
-        canvas.style.cursor = "default";
-    }
-    */
 
 }
 
