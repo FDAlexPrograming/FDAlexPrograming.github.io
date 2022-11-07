@@ -344,8 +344,8 @@ function iniciarPagina() {
     const TIEMPO_DE_JUEGO = 300;
     const CANVAS_WIDTH = 725;
     const CANVAS_HEIGHT = 607;
-    const CANVAS_IMG_BACKGROUND = "/isset/goku.png";
-    const CANVAS_IMG_BOX = "/isset/nube.png";
+    const CANVAS_IMG_BACKGROUND = "goku.png";
+    const CANVAS_IMG_BOX = "nube.png";
 
     let imageFondo = new Image();
     let imagenFicha1 = new Image();
