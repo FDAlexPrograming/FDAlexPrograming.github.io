@@ -14,7 +14,7 @@ function firstLoad() {
 
 function increasePercentage(indicator) {
     indicator.textContent = `${loadingPercentage++}%`;
-    if (loadingPercentage >= 0) { //
+    if (loadingPercentage >= 100) { //
         clearInterval(loaderID);
         indicator.classList.add("hidden");
         indicator.parentElement.classList.add("hidden");
