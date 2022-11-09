@@ -117,31 +117,31 @@ async function loadGame(){
                         placeholder="Jugador 1" />
                     <div class="leftside">
                         <label class="labelexpanded">
-                            <input type="radio" name="targetgroup1" checked value="goku">
+                            <input type="radio" name="target1" checked value="goku">
                             <div class="radio-btns"> <img src="fichas/goku.png" />
                             </div>
                             </input>
                         </label>
                         <label class="labelexpanded">
-                            <input type="radio" name="targetgroup1" disabled value="mayinbu">
+                            <input type="radio" name="target1" disabled value="mayinbu">
                             <div class="radio-btns"> <img src="fichas/mayinbu.png">
                             </div>
                             </input>
                         </label>
                         <label class="labelexpanded">
-                            <input type="radio" name="targetgroup1" value="picoro">
+                            <input type="radio" name="target1" value="picoro">
                             <div class="radio-btns"> <img src="fichas/picoro.png">
                             </div>
                             </input>
                         </label>
                         <label class="labelexpanded">
-                            <input type="radio" name="targetgroup1" value="gohan">
+                            <input type="radio" name="target1" value="gohan">
                             <div class="radio-btns"> <img src="fichas/gohan.png">
                             </div>
                             </input>
                         </label>
                         <label class="labelexpanded">
-                            <input type="radio" name="targetgroup1" value="android 18">
+                            <input type="radio" name="target1" value="android 18">
                             <div class="radio-btns"> <img src="fichas/android 18.png">
                             </div>
                             </input>
@@ -154,31 +154,31 @@ async function loadGame(){
                         placeholder="Jugador 2" />
                     <div class="leftside">
                         <label class="labelexpanded">
-                            <input type="radio" name="targetgroup2" disabled value="goku">
+                            <input type="radio" name="target2" disabled value="goku">
                             <div class="radio-btns"> <img src="fichas/goku.png" />
                             </div>
                             </input>
                         </label>
                         <label class="labelexpanded">
-                            <input type="radio" name="targetgroup2" checked value="mayinbu">
+                            <input type="radio" name="target2" checked value="mayinbu">
                             <div class="radio-btns"> <img src="fichas/mayinbu.png">
                             </div>
                             </input>
                         </label>
                         <label class="labelexpanded">
-                            <input type="radio" name="targetgroup2" value="picoro">
+                            <input type="radio" name="target2" value="picoro">
                             <div class="radio-btns"> <img src="fichas/picoro.png">
                             </div>
                             </input>
                         </label>
                         <label class="labelexpanded">
-                            <input type="radio" name="targetgroup2" value="gohan">
+                            <input type="radio" name="target2" value="gohan">
                             <div class="radio-btns"> <img src="fichas/gohan.png">
                             </div>
                             </input>
                         </label>
                         <label class="labelexpanded">
-                            <input type="radio" name="targetgroup2" value="android 18">
+                            <input type="radio" name="target2" value="android 18">
                             <div class="radio-btns"> <img src="fichas/android 18.png">
                             </div>
                             </input>
@@ -280,7 +280,7 @@ async function loadGame(){
 
 
         `;
-        iniciarPagina();
+        init();
 
 
 
