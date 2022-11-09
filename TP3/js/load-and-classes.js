@@ -431,7 +431,7 @@ ff22.forEach(f => f.addEventListener("click", () => {
 function initVariables() {
     resultadoCanvas.style.display = 'none';
     turnoJ1 = true;
-    turnoCanvas.innerHTML = 'Juega ' + nombre1;
+    turnoCanvas.innerHTML = 'Turn of ' + nombre1;
     listaFichasJugador1 = [];
     listaFichasJugador2 = [];
     matriz_box = [];
@@ -468,7 +468,7 @@ btnPlay.addEventListener("click", function () {
     }
     // ASIGNACION DE NOMBRES J1
     nombre1 = document.getElementById('text-jugador1').value;
-    if (!nombre1) nombre1 = 'Jugador 1';
+    if (!nombre1) nombre1 = 'Player 1';
     let fichas1 = document.getElementsByName('target1');
     for (let ficha of fichas1) {
         if (ficha.checked) {
@@ -480,7 +480,7 @@ btnPlay.addEventListener("click", function () {
 
     // ASIGNACION DE NOMBRES J2
     nombre2 = document.getElementById('text-jugador2').value;
-    if (!nombre2) nombre2 = 'Jugador 2';
+    if (!nombre2) nombre2 = 'Player 2';
     //Ficha
     let fichas2 = document.getElementsByName('target2');
     for (let ficha of fichas2) {
@@ -664,7 +664,7 @@ canvas.addEventListener('mouseup', function (event) {
                     listaFichasJugador1[y].setPosicionFinal(posNueva.x, posNueva.y);
                     listaFichasJugador1[y - 1].setHabilitada(true);
                     turnoJ1 = !turnoJ1;
-                    turnoCanvas.innerHTML = 'Juega ' + nombre2;
+                    turnoCanvas.innerHTML = 'Turn of ' + nombre2;
                 } else {
                     if (boxSeleccionado == null
                         && ficha_j1_seleccionada.getId() === listaFichasJugador1[y].getId()) {
@@ -689,7 +689,7 @@ canvas.addEventListener('mouseup', function (event) {
                         listaFichasJugador2[y].setPosicionFinal(posNueva.x, posNueva.y);
                         listaFichasJugador2[y - 1].setHabilitada(true);
                         turnoJ1 = !turnoJ1;
-                        turnoCanvas.innerHTML = 'Juega ' + nombre1;
+                        turnoCanvas.innerHTML = 'Turn of ' + nombre1;
                     } else {
                         if (boxSeleccionado == null
                             && ficha_j2_seleccionada.getId() === listaFichasJugador2[y].getId()) {
@@ -821,7 +821,7 @@ function validarJugada(jugador, cInicial, fInicial) {
 function finJuego(jugador) {
     clearTimeout(timerId);
     resultadoCanvas.style.display = 'flex';
-    resultadoCanvas.innerHTML = 'Ganó ' + jugador;
+    resultadoCanvas.innerHTML =  jugador + ' won';
     endGame = true;
 }
 
@@ -855,7 +855,7 @@ function decreaseTimer() {
     if (timer === 0) {
         clearTimeout(timerId);
         resultadoCanvas.style.display = 'flex';
-        resultadoCanvas.innerHTML = 'Empate';
+        resultadoCanvas.innerHTML = 'Tied';
         endGame = true;
     }
 }

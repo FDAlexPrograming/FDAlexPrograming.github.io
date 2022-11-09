@@ -316,11 +316,12 @@
     font-size: 27px;
     background:transparent;
     border-radius: 15px;
-    width: 30%;
+    width: 45%;
     padding-left: 10px; 
     font-weight: 700;
     border: none;
     margin-bottom: 10px;
+    background: #463318;
 }
 
 

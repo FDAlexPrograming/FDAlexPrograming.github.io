@@ -104,17 +104,17 @@ async function loadGame(){
             <div class="div-btns-play">
                 <div>
                     <input type="radio" name="dificultad" value="4" id="radio-facil" checked />
-                    <label for="radio-facil">Jugar con 4 </label>
+                    <label for="radio-facil">play with 4 </label>
                     <input type="radio" name="dificultad" value="5" id="radio-moderada" />
-                    <label for="radio-moderada">Jugar con 5 </label>
+                    <label for="radio-moderada">play with 5 </label>
                     <input type="radio" name="dificultad" value="6" id="radio-dificil" />
-                    <label for="radio-dificil">Jugar con 6 </label>
+                    <label for="radio-dificil">play with 6 </label>
                     <input type="radio" name="dificultad" value="7" id="radio-epica" />
-                    <label for="radio-epica">Jugar con 7 </label>
+                    <label for="radio-epica">play with 7 </label>
                 </div>
                 <div class="jugador-seleccion">
-                    <input type="text" class="text-jugador" id="text-jugador1" name="text-jugador1" value="Jugador 1"
-                        placeholder="Jugador 1" />
+                    <input type="text" class="text-jugador" id="text-jugador1" name="text-jugador1" value="Player 1"
+                        placeholder="Player 1" />
                     <div class="leftside">
                         <label class="labelexpanded">
                             <input type="radio" name="target1" checked value="goku">
@@ -150,8 +150,8 @@ async function loadGame(){
                 </div>
 
                 <div class="jugador-seleccion">
-                    <input type="text" class="text-jugador" id="text-jugador2" name="text-jugador2" value="Jugador 2"
-                        placeholder="Jugador 2" />
+                    <input type="text" class="text-jugador" id="text-jugador2" name="text-jugador2" value="Player 2"
+                        placeholder="Player 2" />
                     <div class="leftside">
                         <label class="labelexpanded">
                             <input type="radio" name="target2" disabled value="goku">
@@ -186,7 +186,7 @@ async function loadGame(){
                     </div>
                 </div>
                 <div>
-                    <button class="item-btn btn-play" id="btn-play-start">Jugar</button>
+                    <button class="item-btn btn-play" id="btn-play-start">Play</button>
                     <button class="item-btn item-btn-bajando" id="btn-play-cancel">Cancel</button>
                 </div>
             </div>
@@ -198,8 +198,8 @@ async function loadGame(){
         </div>
         <div class="timer-canvas"></div>
         <div class="btn-canvas">
-            <button class="item-btn btn-play" id="btn-reiniciar">Reiniciar</button>
-            <button class="item-btn item-btn-bajando" id="btn-game-out">Salir</button>
+            <button class="item-btn btn-play" id="btn-reiniciar">Restart</button>
+            <button class="item-btn item-btn-bajando" id="btn-game-out">Exit</button>
         </div>
         <div class="resultado-canvas">
         </div>
