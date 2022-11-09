@@ -394,7 +394,7 @@
 .turno-canvas {
     position: absolute;
     display: flex;
-    top: 4rem;
+    top: 2rem;
     left: 15rem;
     height: 60px;
     border-radius: 15px;
@@ -446,7 +446,7 @@
 
 #btn-reiniciar,
 #btn-game-out {
-    top: 34rem;
+    top: 551px;
     left: -38px;
 }
 
