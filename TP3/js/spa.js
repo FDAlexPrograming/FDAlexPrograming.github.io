@@ -209,7 +209,13 @@ async function loadGame(){
 
 
 
-
+<section class="game-section">
+    <div class="game-info-carousel">
+        <div class="info-box description-game">
+            <p>Check out this totally cool game, very fun, very classic, best description ever. Don’t forget to leave a comment or review</p>
+        </div>
+    </div>
+</section>
 
     <div class="review-title"><h1>Leave a Review..</h1></div>
 <section class="review-box-section">
