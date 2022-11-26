@@ -284,6 +284,10 @@ a{
     display: flex;
     align-items: center;
     height: 43px;
+    position: absolute;
+    right: 30px;
+    bottom: 37px;
+
 }
 
 .menu{
@@ -292,7 +296,7 @@ a{
 
 .btn_menu i{
     position: absolute;
-    right: 30px;
+    right: 0px;
 }
 
 .navigation_mobil{

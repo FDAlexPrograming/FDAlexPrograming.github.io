@@ -64,3 +64,7 @@ h2 {
     z-index: 100;
     right: 10%;
 }
+
+.transparent {
+    opacity: 0;
+}

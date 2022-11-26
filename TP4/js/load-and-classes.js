@@ -199,6 +199,9 @@ class Carousel {
     scrollingWrapperCard;
     section;
     cards = [];
+    matrix = [];
+    currentIndex = 0;
+    displaySize = 4;
 
     constructor(id, sectionTitle, cards) {
         this.id = id;
@@ -247,10 +250,47 @@ class Carousel {
 
             this.section.appendChild(btns);
         }
+        // this.displaySize = Math.floor(this.scrollingWrapperCard.clientWidth / 240);
+        // if (this.displaySize < 2) {
+        //     this.displaySize = 2;
+        // }
+    }
+
+    initMatrix(cards) {
+        let size = this.displaySize;
+        for (let i = 0; i < cards.length; i++) {
+            let slice = cards.slice(i, i+size);
+            let container = document.createElement("div");
+            for (let c of slice) {
+                container.appendChild(c);
+            }
+            this.matrix.push(container);
+        }
     }
 
     scrollCarousel(value) {
         this.scrollingWrapperCard.scrollLeft += value;
+    }
+
+    reveal() {
+        // var reveals = document.querySelectorAll(".reveal");
+        //
+        // for (var i = 0; i < reveals.length; i++) {
+        //     var windowWidth = this.scrollingWrapperCard.clientWidth;
+        //     var elementWidth = reveals[i].getBoundingClientRect().width;
+        //     var elementVisible = 0;
+        //     console.log(windowWidth);
+        //     if (elementWidth < windowWidth - elementVisible) {
+        //         reveals[i].classList.add("active");
+        //     } else {
+        //         reveals[i].classList.remove("active");
+        //     }
+        // }
+        //
+        if (this.currentIndex < this.matrix.length) {
+            this.matrix[this.currentIndex++].classList.remove("active");
+            this.matrix[this.currentIndex].classList.add("active");
+        }
     }
 }
 
@@ -284,7 +324,7 @@ function loadContent() {
     for (let playButton of document.getElementsByClassName("play")) {
         playButton.addEventListener("click", loadGame);
     }
-  
+
 }
 
 function loadHeader() {
@@ -326,9 +366,23 @@ function loadHeader() {
 
 }
 
-document.querySelector(".btn_menu").addEventListener("click", function (e) {
+document.querySelector(".menu-div").addEventListener("click", function (e) {
     document.querySelector(".navigation").classList.toggle("navigation_mobil");
+    //TODO La animacion deberia ser a partir de los 3 palitos
+    document.querySelector(".hamburger").classList.toggle("transparent");
+    document.querySelector(".cross").classList.toggle("transparent");
+    document.querySelector(".btn_menu i").animate([
+        { transform: 'rotate(0deg)'},
+        { transform: 'rotate(360deg)'}], {duration: 250})
 
+});
+document.querySelector(".menu-div").addEventListener("mouseenter", function (e) {
+    document.querySelector(".hamburger i").classList.toggle("hovered");
+    document.querySelector(".cross i").classList.toggle("hovered");
+});
+document.querySelector(".menu-div").addEventListener("mouseleave", function (e) {
+    document.querySelector(".hamburger i").classList.toggle("hovered");
+    document.querySelector(".cross i").classList.toggle("hovered");
 });
 document.querySelector(".btn_sub_menu").addEventListener("click", function (e) {
     document.querySelector(".sub_menu_display").classList.toggle("sub_menu");
@@ -341,532 +395,532 @@ document.querySelector(".btn_sub_menu").addEventListener("click", function (e) {
 
 function init(){
 
-const TIME = 300;
-const CANVAS_WIDTH = 725;
-const CANVAS_HEIGHT = 607;
-const CANVAS_IMG_BACKGROUND = "goku.png";
-const CANVAS_IMG_BOX = "nube.png";
-let imageFondo = new Image();
-let imagenFicha1 = new Image();
-let imagenFicha2 = new Image();
-let imgBox = new Image();
-imgBox.src = CANVAS_IMG_BOX;
-let dificultad;
-let columnas;
-let filas;
-let turnoJ1 = true;
-let nombre1;
-let ficha1;
-let nombre2;
-let ficha2;
-let endGame = false;
-let timer = TIME;
-let timerId;
-let listaFichasJugador1 = [];
-let ficha_j1_seleccionada = null;
-let listaFichasJugador2 = [];
-let ficha_j2_seleccionada = null;
-let matriz_box = [];
-let boxSeleccionado = null;
-imageFondo.src = CANVAS_IMG_BACKGROUND;
-let divGame = document.querySelector("#div-hero-game");
-divGame.style.display = 'block';
-let contentCanvas = document.querySelector(".content-canvas");
-contentCanvas.style.display = 'none';
-let canvas = document.querySelector("#canvas");
-let ctx = canvas.getContext('2d');
-canvas.style.display = 'none';
-let heroTitleJugar = document.querySelector("#hero-title-jugar");
-heroTitleJugar.style.display = 'block';
-let heroTitleJugarOpciones = document.querySelector("#hero-title-jugar-opciones");
-heroTitleJugarOpciones.style.display = 'none';
-let btnPlayGame = document.querySelector("#btn-play-cel");
-btnPlayGame.addEventListener("click", function (event) {
-    heroTitleJugar.style.display = 'none';
-    heroTitleJugarOpciones.style.display = 'block';
-});
-let btnCancel = document.querySelector("#btn-play-cancel");
-btnCancel.addEventListener("click", function (event) {
-    heroTitleJugar.style.display = 'block';
-    heroTitleJugarOpciones.style.display = 'none';
-});
-let btnGameOut = document.querySelector("#btn-game-out");
-btnGameOut.addEventListener("click", function (event) {
+    const TIME = 300;
+    const CANVAS_WIDTH = 725;
+    const CANVAS_HEIGHT = 607;
+    const CANVAS_IMG_BACKGROUND = "goku.png";
+    const CANVAS_IMG_BOX = "nube.png";
+    let imageFondo = new Image();
+    let imagenFicha1 = new Image();
+    let imagenFicha2 = new Image();
+    let imgBox = new Image();
+    imgBox.src = CANVAS_IMG_BOX;
+    let dificultad;
+    let columnas;
+    let filas;
+    let turnoJ1 = true;
+    let nombre1;
+    let ficha1;
+    let nombre2;
+    let ficha2;
+    let endGame = false;
+    let timer = TIME;
+    let timerId;
+    let listaFichasJugador1 = [];
+    let ficha_j1_seleccionada = null;
+    let listaFichasJugador2 = [];
+    let ficha_j2_seleccionada = null;
+    let matriz_box = [];
+    let boxSeleccionado = null;
+    imageFondo.src = CANVAS_IMG_BACKGROUND;
+    let divGame = document.querySelector("#div-hero-game");
     divGame.style.display = 'block';
+    let contentCanvas = document.querySelector(".content-canvas");
     contentCanvas.style.display = 'none';
+    let canvas = document.querySelector("#canvas");
+    let ctx = canvas.getContext('2d');
     canvas.style.display = 'none';
+    let heroTitleJugar = document.querySelector("#hero-title-jugar");
     heroTitleJugar.style.display = 'block';
+    let heroTitleJugarOpciones = document.querySelector("#hero-title-jugar-opciones");
     heroTitleJugarOpciones.style.display = 'none';
-    initVariables();
-});
-let resultadoCanvas = document.querySelector(".resultado-canvas");
-let turnoCanvas = document.querySelector(".turno-canvas");
-let btnReiniciar = document.querySelector("#btn-reiniciar");
-btnReiniciar.addEventListener("click", function () {
-    initVariables();
-});
-let ff11 = document.getElementsByName('target1');
-ff11.forEach(f => f.addEventListener("click", () => {
-    let ff22 = document.getElementsByName('target2');
-    for (let f22 of ff22) {
-        f22.disabled = false;
-        if (f22.value === f.value) {
-            f22.disabled = true;
-        }
-    }
-}));
-
-let ff22 = document.getElementsByName('target2');
-ff22.forEach(f => f.addEventListener("click", () => {
+    let btnPlayGame = document.querySelector("#btn-play-cel");
+    btnPlayGame.addEventListener("click", function (event) {
+        heroTitleJugar.style.display = 'none';
+        heroTitleJugarOpciones.style.display = 'block';
+    });
+    let btnCancel = document.querySelector("#btn-play-cancel");
+    btnCancel.addEventListener("click", function (event) {
+        heroTitleJugar.style.display = 'block';
+        heroTitleJugarOpciones.style.display = 'none';
+    });
+    let btnGameOut = document.querySelector("#btn-game-out");
+    btnGameOut.addEventListener("click", function (event) {
+        divGame.style.display = 'block';
+        contentCanvas.style.display = 'none';
+        canvas.style.display = 'none';
+        heroTitleJugar.style.display = 'block';
+        heroTitleJugarOpciones.style.display = 'none';
+        initVariables();
+    });
+    let resultadoCanvas = document.querySelector(".resultado-canvas");
+    let turnoCanvas = document.querySelector(".turno-canvas");
+    let btnReiniciar = document.querySelector("#btn-reiniciar");
+    btnReiniciar.addEventListener("click", function () {
+        initVariables();
+    });
     let ff11 = document.getElementsByName('target1');
-    for (let f11 of ff11) {
-        f11.disabled = false;
-        if (f11.value === f.value) {
-            f11.disabled = true;
+    ff11.forEach(f => f.addEventListener("click", () => {
+        let ff22 = document.getElementsByName('target2');
+        for (let f22 of ff22) {
+            f22.disabled = false;
+            if (f22.value === f.value) {
+                f22.disabled = true;
+            }
         }
-    }
-}));
+    }));
+
+    let ff22 = document.getElementsByName('target2');
+    ff22.forEach(f => f.addEventListener("click", () => {
+        let ff11 = document.getElementsByName('target1');
+        for (let f11 of ff11) {
+            f11.disabled = false;
+            if (f11.value === f.value) {
+                f11.disabled = true;
+            }
+        }
+    }));
 
 //INICIO DE VARIABLES DEL JUEGO
-function initVariables() {
-    resultadoCanvas.style.display = 'none';
-    turnoJ1 = true;
-    turnoCanvas.innerHTML = 'Turn of ' + nombre1;
-    listaFichasJugador1 = [];
-    listaFichasJugador2 = [];
-    matriz_box = [];
-    ficha_j1_seleccionada = null;
-    ficha_j2_seleccionada = null;
-    boxSeleccionado = null;
-    endGame = false;
-    inicioX = 0;
-    inicioY = 0;
-    canvasDraw();
-    timer = TIME;
-    clearTimeout(timerId);
-    decreaseTimer();
-}
+    function initVariables() {
+        resultadoCanvas.style.display = 'none';
+        turnoJ1 = true;
+        turnoCanvas.innerHTML = 'Turn of ' + nombre1;
+        listaFichasJugador1 = [];
+        listaFichasJugador2 = [];
+        matriz_box = [];
+        ficha_j1_seleccionada = null;
+        ficha_j2_seleccionada = null;
+        boxSeleccionado = null;
+        endGame = false;
+        inicioX = 0;
+        inicioY = 0;
+        canvasDraw();
+        timer = TIME;
+        clearTimeout(timerId);
+        decreaseTimer();
+    }
 
 //INICIO DEL JUEGO
-let btnPlay = document.querySelector("#btn-play-start");
-btnPlay.addEventListener("click", function () {
-    heroTitleJugar.style.display = 'none';
-    heroTitleJugarOpciones.style.display = 'none';
-    divGame.style.display = 'none';
-    contentCanvas.style.display = 'block';
-    canvas.style.display = 'block';
-    canvas.width = CANVAS_WIDTH;
-    canvas.height = CANVAS_HEIGHT;
-    // CUANDAS FICHAS VA A JUGAR 
-    let dificultades = document.getElementsByName('dificultad');
-    for (let d of dificultades) {
-        if (d.checked) {
-            dificultad = Number(d.value);
-            columnas = dificultad + 2;
-            filas = dificultad + 1;
+    let btnPlay = document.querySelector("#btn-play-start");
+    btnPlay.addEventListener("click", function () {
+        heroTitleJugar.style.display = 'none';
+        heroTitleJugarOpciones.style.display = 'none';
+        divGame.style.display = 'none';
+        contentCanvas.style.display = 'block';
+        canvas.style.display = 'block';
+        canvas.width = CANVAS_WIDTH;
+        canvas.height = CANVAS_HEIGHT;
+        // CUANDAS FICHAS VA A JUGAR
+        let dificultades = document.getElementsByName('dificultad');
+        for (let d of dificultades) {
+            if (d.checked) {
+                dificultad = Number(d.value);
+                columnas = dificultad + 2;
+                filas = dificultad + 1;
+            }
         }
-    }
-    // ASIGNACION DE NOMBRES J1
-    nombre1 = document.getElementById('text-jugador1').value;
-    if (!nombre1) nombre1 = 'Player 1';
-    let fichas1 = document.getElementsByName('target1');
-    for (let ficha of fichas1) {
-        if (ficha.checked) {
-            ficha1 = ficha.value;
+        // ASIGNACION DE NOMBRES J1
+        nombre1 = document.getElementById('text-jugador1').value;
+        if (!nombre1) nombre1 = 'Player 1';
+        let fichas1 = document.getElementsByName('target1');
+        for (let ficha of fichas1) {
+            if (ficha.checked) {
+                ficha1 = ficha.value;
+            }
         }
-    }
 
-    imagenFicha1.src = "./fichas/" + ficha1 + ".png";
+        imagenFicha1.src = "./fichas/" + ficha1 + ".png";
 
-    // ASIGNACION DE NOMBRES J2
-    nombre2 = document.getElementById('text-jugador2').value;
-    if (!nombre2) nombre2 = 'Player 2';
-    //Ficha
-    let fichas2 = document.getElementsByName('target2');
-    for (let ficha of fichas2) {
-        if (ficha.checked) {
-            ficha2 = ficha.value;
+        // ASIGNACION DE NOMBRES J2
+        nombre2 = document.getElementById('text-jugador2').value;
+        if (!nombre2) nombre2 = 'Player 2';
+        //Ficha
+        let fichas2 = document.getElementsByName('target2');
+        for (let ficha of fichas2) {
+            if (ficha.checked) {
+                ficha2 = ficha.value;
+            }
         }
-    }
-    imagenFicha2.src = "./fichas/" + ficha2 + ".png";
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    initVariables();
-});
+        imagenFicha2.src = "./fichas/" + ficha2 + ".png";
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        initVariables();
+    });
 
 //DIBUJAR BOX JUEGO
-function canvasDraw() {
-    //BAGROUND
-    ctx.drawImage(imageFondo, 0, 0, canvas.width, canvas.height);
+    function canvasDraw() {
+        //BAGROUND
+        ctx.drawImage(imageFondo, 0, 0, canvas.width, canvas.height);
 
-    let total_fichas = ((filas * columnas) / 2) + 1;
-    for (let i = 0; i < total_fichas; i++) {
-        let f1 = new canvas_ficha(
-            nombre1,
-            'f1' + i + 1,
-            ctx,
-            30,
-            400 - (i * 5),
-            imagenFicha1,);
-        f1.draw();
-        if (i === total_fichas - 1) {
-            f1.setHabilitada(true);
-        }
-        listaFichasJugador1[i] = f1;
-    }
-    for (let i = 0; i < total_fichas; i++) {
-        let f2 = new canvas_ficha(
-            nombre2,
-            'f2' + i + 1,
-            ctx,
-            690,
-            400 - (i * 5),
-            imagenFicha2,);
-        f2.draw();
-        if (i === total_fichas - 1) {
-            f2.setHabilitada(true);
-        }
-        listaFichasJugador2[i] = f2;
-    }
-    let xInit;
-    let yInit;
-    switch (dificultad) {
-        case 4:
-            xInit = 180;
-            yInit = 150;
-            break;
-        case 5:
-            xInit = 155;
-            yInit = 125;
-            break;
-        case 6:
-            xInit = 125;
-            yInit = 100;
-            break;
-        case 7:
-            xInit = 100;
-            yInit = 75;
-            break;
-    }
-    for (let col = columnas; col >= 0; col--) {
-        matriz_box[col] = [];
-        for (let fil = filas; fil >= 0; fil--) {
-            let b = new canvas_box(
-                "",
+        let total_fichas = ((filas * columnas) / 2) + 1;
+        for (let i = 0; i < total_fichas; i++) {
+            let f1 = new canvas_ficha(
+                nombre1,
+                'f1' + i + 1,
                 ctx,
-                xInit + (col * 54),
-                yInit + (fil * 54),
-                imgBox,
-                52,
-                52, `rgba(${0},${200},${200},${200})`);
-            b.draw();
-            matriz_box[col][fil] = b;
+                30,
+                400 - (i * 5),
+                imagenFicha1,);
+            f1.draw();
+            if (i === total_fichas - 1) {
+                f1.setHabilitada(true);
+            }
+            listaFichasJugador1[i] = f1;
         }
-    }
+        for (let i = 0; i < total_fichas; i++) {
+            let f2 = new canvas_ficha(
+                nombre2,
+                'f2' + i + 1,
+                ctx,
+                690,
+                400 - (i * 5),
+                imagenFicha2,);
+            f2.draw();
+            if (i === total_fichas - 1) {
+                f2.setHabilitada(true);
+            }
+            listaFichasJugador2[i] = f2;
+        }
+        let xInit;
+        let yInit;
+        switch (dificultad) {
+            case 4:
+                xInit = 180;
+                yInit = 150;
+                break;
+            case 5:
+                xInit = 155;
+                yInit = 125;
+                break;
+            case 6:
+                xInit = 125;
+                yInit = 100;
+                break;
+            case 7:
+                xInit = 100;
+                yInit = 75;
+                break;
+        }
+        for (let col = columnas; col >= 0; col--) {
+            matriz_box[col] = [];
+            for (let fil = filas; fil >= 0; fil--) {
+                let b = new canvas_box(
+                    "",
+                    ctx,
+                    xInit + (col * 54),
+                    yInit + (fil * 54),
+                    imgBox,
+                    52,
+                    52, `rgba(${0},${200},${200},${200})`);
+                b.draw();
+                matriz_box[col][fil] = b;
+            }
+        }
 
-}
+    }
 
 //ACCIONES Y RESTRICCIONES DEL MOUSE
-canvas.addEventListener('mousedown', function (event) {
-    if (!endGame) {
+    canvas.addEventListener('mousedown', function (event) {
+        if (!endGame) {
+            let mousePos = getMousePos(event);
+            if (turnoJ1) {
+                for (let i = 0; i < listaFichasJugador1.length; i++) {
+                    let x = mousePos.x;
+                    let y = mousePos.y;
+                    let dx = Math.abs(x - listaFichasJugador1[i].getPosCanvasX());
+                    let dy = Math.abs(y - listaFichasJugador1[i].getPosCanvasY());
+                    let distancia = Math.sqrt(Math.pow(dx, 2) + Math.pow(dy, 2));
+                    if (distancia <= listaFichasJugador1[i].getRadio() && listaFichasJugador1[i].isHabilitada()) {
+                        ficha_j1_seleccionada = listaFichasJugador1[i];
+                        inicioX = listaFichasJugador1[i].getPosCanvasX();
+                        inicioY = listaFichasJugador1[i].getPosCanvasY();
+                        break;
+                    }
+                }
+            } else {//TURNO J2
+                for (let i = 0; i < listaFichasJugador2.length; i++) {
+                    let x = mousePos.x;
+                    let y = mousePos.y;
+                    let dx = Math.abs(x - listaFichasJugador2[i].getPosCanvasX());
+                    let dy = Math.abs(y - listaFichasJugador2[i].getPosCanvasY());
+                    let distancia = Math.sqrt(Math.pow(dx, 2) + Math.pow(dy, 2));
+                    if (distancia <= listaFichasJugador2[i].getRadio() && listaFichasJugador2[i].isHabilitada()) {
+                        ficha_j2_seleccionada = listaFichasJugador2[i];
+                        inicioX = listaFichasJugador2[i].getPosCanvasX();
+                        inicioY = listaFichasJugador2[i].getPosCanvasY();
+                        break;
+                    }
+                }
+            }
+        }
+    });
+    canvas.addEventListener('mousemove', function (event) {
         let mousePos = getMousePos(event);
         if (turnoJ1) {
-            for (let i = 0; i < listaFichasJugador1.length; i++) {
-                let x = mousePos.x;
-                let y = mousePos.y;
-                let dx = Math.abs(x - listaFichasJugador1[i].getPosCanvasX());
-                let dy = Math.abs(y - listaFichasJugador1[i].getPosCanvasY());
-                let distancia = Math.sqrt(Math.pow(dx, 2) + Math.pow(dy, 2));
-                if (distancia <= listaFichasJugador1[i].getRadio() && listaFichasJugador1[i].isHabilitada()) {
-                    ficha_j1_seleccionada = listaFichasJugador1[i];
-                    inicioX = listaFichasJugador1[i].getPosCanvasX();
-                    inicioY = listaFichasJugador1[i].getPosCanvasY();
-                    break;
-                }
+            if (ficha_j1_seleccionada != null) {
+                ficha_j1_seleccionada.setPosicionCanvas(
+                    mousePos.x,
+                    mousePos.y
+                )
             }
-        } else {//TURNO J2
-            for (let i = 0; i < listaFichasJugador2.length; i++) {
-                let x = mousePos.x;
-                let y = mousePos.y;
-                let dx = Math.abs(x - listaFichasJugador2[i].getPosCanvasX());
-                let dy = Math.abs(y - listaFichasJugador2[i].getPosCanvasY());
-                let distancia = Math.sqrt(Math.pow(dx, 2) + Math.pow(dy, 2));
-                if (distancia <= listaFichasJugador2[i].getRadio() && listaFichasJugador2[i].isHabilitada()) {
-                    ficha_j2_seleccionada = listaFichasJugador2[i];
-                    inicioX = listaFichasJugador2[i].getPosCanvasX();
-                    inicioY = listaFichasJugador2[i].getPosCanvasY();
-                    break;
-                }
+        } else {
+            if (ficha_j2_seleccionada != null) {
+                ficha_j2_seleccionada.setPosicionCanvas(
+                    mousePos.x,
+                    mousePos.y
+                )
             }
         }
-    }
-});
-canvas.addEventListener('mousemove', function (event) {
-    let mousePos = getMousePos(event);
-    if (turnoJ1) {
-        if (ficha_j1_seleccionada != null) {
-            ficha_j1_seleccionada.setPosicionCanvas(
-                mousePos.x,
-                mousePos.y
-            )
-        }
-    } else {
-        if (ficha_j2_seleccionada != null) {
-            ficha_j2_seleccionada.setPosicionCanvas(
-                mousePos.x,
-                mousePos.y
-            )
-        }
-    }
-    canvasReload();
-});
-canvas.addEventListener('mouseup', function (event) {
-    let validarPosX = -1;
-    let validarPosY = -1;
-    if (ficha_j1_seleccionada != null || ficha_j2_seleccionada != null) {
-        let mousePos = getMousePos(event);
-        for (let i = columnas; i >= 0 && !boxSeleccionado; i--) {
-            let j = 0;
-            if (matriz_box[i][j].getPosCanvasX() < mousePos.x
-                && !matriz_box[i][j].isOcupado()
-                && (matriz_box[i][j].getLadoX() + matriz_box[i][j].getPosCanvasX() > mousePos.x)
-                && matriz_box[i][j].getPosCanvasY() < mousePos.y
-                && (matriz_box[i][j].getLadoY() + matriz_box[i][j].getPosCanvasY() > mousePos.y)
-            ) {//Si se suelta la ficha en un box
-                for (let fil = filas; fil >= 0 && !boxSeleccionado; fil--) {
-                    if (!matriz_box[i][fil].isOcupado()) {
-                        matriz_box[i][fil].setOcupado(true);
-                        if (ficha_j1_seleccionada != null) {
-                            matriz_box[i][fil].setJugador(ficha_j1_seleccionada.getJugador());
-                        } else {
-                            if (ficha_j2_seleccionada != null) {
-                                matriz_box[i][fil].setJugador(ficha_j2_seleccionada.getJugador());
+        canvasReload();
+    });
+    canvas.addEventListener('mouseup', function (event) {
+        let validarPosX = -1;
+        let validarPosY = -1;
+        if (ficha_j1_seleccionada != null || ficha_j2_seleccionada != null) {
+            let mousePos = getMousePos(event);
+            for (let i = columnas; i >= 0 && !boxSeleccionado; i--) {
+                let j = 0;
+                if (matriz_box[i][j].getPosCanvasX() < mousePos.x
+                    && !matriz_box[i][j].isOcupado()
+                    && (matriz_box[i][j].getLadoX() + matriz_box[i][j].getPosCanvasX() > mousePos.x)
+                    && matriz_box[i][j].getPosCanvasY() < mousePos.y
+                    && (matriz_box[i][j].getLadoY() + matriz_box[i][j].getPosCanvasY() > mousePos.y)
+                ) {//Si se suelta la ficha en un box
+                    for (let fil = filas; fil >= 0 && !boxSeleccionado; fil--) {
+                        if (!matriz_box[i][fil].isOcupado()) {
+                            matriz_box[i][fil].setOcupado(true);
+                            if (ficha_j1_seleccionada != null) {
+                                matriz_box[i][fil].setJugador(ficha_j1_seleccionada.getJugador());
+                            } else {
+                                if (ficha_j2_seleccionada != null) {
+                                    matriz_box[i][fil].setJugador(ficha_j2_seleccionada.getJugador());
+                                }
                             }
+                            boxSeleccionado = matriz_box[i][fil];
+                            validarPosX = i;
+                            validarPosY = fil;
                         }
-                        boxSeleccionado = matriz_box[i][fil];
-                        validarPosX = i;
-                        validarPosY = fil;
                     }
                 }
             }
         }
-    }
-    if (turnoJ1 && ficha_j1_seleccionada != null) {
-        for (let y = 0; y < listaFichasJugador1.length; y++) {
-            if (ficha_j1_seleccionada.getId() === listaFichasJugador1[y].getId()) {
-                if (boxSeleccionado != null) {
-                    let posNueva = {
-                        x: boxSeleccionado.getPosCanvasX() + (boxSeleccionado.getLadoX() / 2),
-                        y: boxSeleccionado.getPosCanvasY() - 1 + ((boxSeleccionado.getLadoY() - listaFichasJugador1[y].getRadio()))
-                    }
-                    validarJugada(boxSeleccionado.getJugador(), validarPosX, validarPosY);
-
-                    listaFichasJugador1[y].setHabilitada(false);
-                    listaFichasJugador1[y].setPosicionFinal(posNueva.x, posNueva.y);
-                    listaFichasJugador1[y - 1].setHabilitada(true);
-                    turnoJ1 = !turnoJ1;
-                    turnoCanvas.innerHTML = 'Turn of ' + nombre2;
-                } else {
-                    if (boxSeleccionado == null
-                        && ficha_j1_seleccionada.getId() === listaFichasJugador1[y].getId()) {
-                        listaFichasJugador1[y].setPosicionInicial();
-                    }
-                }
-                break;
-            }
-        }
-        ficha_j1_seleccionada = null;
-    } else {
-        if (!turnoJ1 && ficha_j2_seleccionada != null) {
-            for (let y = 0; y < listaFichasJugador2.length; y++) {
-                if (ficha_j2_seleccionada.getId() === listaFichasJugador2[y].getId()) {
+        if (turnoJ1 && ficha_j1_seleccionada != null) {
+            for (let y = 0; y < listaFichasJugador1.length; y++) {
+                if (ficha_j1_seleccionada.getId() === listaFichasJugador1[y].getId()) {
                     if (boxSeleccionado != null) {
                         let posNueva = {
                             x: boxSeleccionado.getPosCanvasX() + (boxSeleccionado.getLadoX() / 2),
-                            y: boxSeleccionado.getPosCanvasY() - 1 + ((boxSeleccionado.getLadoY() - listaFichasJugador2[y].getRadio()))
+                            y: boxSeleccionado.getPosCanvasY() - 1 + ((boxSeleccionado.getLadoY() - listaFichasJugador1[y].getRadio()))
                         }
                         validarJugada(boxSeleccionado.getJugador(), validarPosX, validarPosY);
-                        listaFichasJugador2[y].setHabilitada(false);
-                        listaFichasJugador2[y].setPosicionFinal(posNueva.x, posNueva.y);
-                        listaFichasJugador2[y - 1].setHabilitada(true);
+
+                        listaFichasJugador1[y].setHabilitada(false);
+                        listaFichasJugador1[y].setPosicionFinal(posNueva.x, posNueva.y);
+                        listaFichasJugador1[y - 1].setHabilitada(true);
                         turnoJ1 = !turnoJ1;
-                        turnoCanvas.innerHTML = 'Turn of ' + nombre1;
+                        turnoCanvas.innerHTML = 'Turn of ' + nombre2;
                     } else {
                         if (boxSeleccionado == null
-                            && ficha_j2_seleccionada.getId() === listaFichasJugador2[y].getId()) {
-                            listaFichasJugador2[y].setPosicionInicial();
+                            && ficha_j1_seleccionada.getId() === listaFichasJugador1[y].getId()) {
+                            listaFichasJugador1[y].setPosicionInicial();
                         }
                     }
                     break;
                 }
             }
-            ficha_j2_seleccionada = null;
+            ficha_j1_seleccionada = null;
+        } else {
+            if (!turnoJ1 && ficha_j2_seleccionada != null) {
+                for (let y = 0; y < listaFichasJugador2.length; y++) {
+                    if (ficha_j2_seleccionada.getId() === listaFichasJugador2[y].getId()) {
+                        if (boxSeleccionado != null) {
+                            let posNueva = {
+                                x: boxSeleccionado.getPosCanvasX() + (boxSeleccionado.getLadoX() / 2),
+                                y: boxSeleccionado.getPosCanvasY() - 1 + ((boxSeleccionado.getLadoY() - listaFichasJugador2[y].getRadio()))
+                            }
+                            validarJugada(boxSeleccionado.getJugador(), validarPosX, validarPosY);
+                            listaFichasJugador2[y].setHabilitada(false);
+                            listaFichasJugador2[y].setPosicionFinal(posNueva.x, posNueva.y);
+                            listaFichasJugador2[y - 1].setHabilitada(true);
+                            turnoJ1 = !turnoJ1;
+                            turnoCanvas.innerHTML = 'Turn of ' + nombre1;
+                        } else {
+                            if (boxSeleccionado == null
+                                && ficha_j2_seleccionada.getId() === listaFichasJugador2[y].getId()) {
+                                listaFichasJugador2[y].setPosicionInicial();
+                            }
+                        }
+                        break;
+                    }
+                }
+                ficha_j2_seleccionada = null;
+            }
         }
-    }
-    boxSeleccionado = null;
-    canvasReload();
-});
+        boxSeleccionado = null;
+        canvasReload();
+    });
 
 //POR CADA JUGADA SE VERIFICA SI HAY GANADOR
-function validarJugada(jugador, cInicial, fInicial) {
-    let contador = 0;
-    for (let col = cInicial; col >= 0 && !endGame; col--) {
-        if (matriz_box[col][fInicial].getJugador() === jugador) {
-            contador++;
-            if (contador == dificultad) {
-                finJuego(jugador);
+    function validarJugada(jugador, cInicial, fInicial) {
+        let contador = 0;
+        for (let col = cInicial; col >= 0 && !endGame; col--) {
+            if (matriz_box[col][fInicial].getJugador() === jugador) {
+                contador++;
+                if (contador == dificultad) {
+                    finJuego(jugador);
+                }
+            } else {
+                break;
             }
-        } else {
-            break;
         }
-    }
-    for (let col = cInicial + 1; col <= columnas && !endGame; col++) {
-        if (matriz_box[col][fInicial].getJugador() === jugador) {
-            contador++;
-            if (contador == dificultad) {
-                finJuego(jugador);
+        for (let col = cInicial + 1; col <= columnas && !endGame; col++) {
+            if (matriz_box[col][fInicial].getJugador() === jugador) {
+                contador++;
+                if (contador == dificultad) {
+                    finJuego(jugador);
+                }
+            } else {
+                break;
             }
-        } else {
-            break;
         }
-    }
 
-    //VALIDACION ARRIBA ABAJO
-    contador = 0;
-    for (let fil = fInicial; fil >= 0 && !endGame; fil--) {
-        if (matriz_box[cInicial][fil].getJugador() === jugador) {
-            contador++;
-            if (contador == dificultad) {
-                finJuego(jugador);
+        //VALIDACION ARRIBA ABAJO
+        contador = 0;
+        for (let fil = fInicial; fil >= 0 && !endGame; fil--) {
+            if (matriz_box[cInicial][fil].getJugador() === jugador) {
+                contador++;
+                if (contador == dificultad) {
+                    finJuego(jugador);
+                }
+            } else {
+                break;
             }
-        } else {
-            break;
         }
-    }
-    for (let fil = fInicial + 1; fil <= filas && !endGame; fil++) {
-        if (matriz_box[cInicial][fil].getJugador() === jugador) {
-            contador++;
-            if (contador == dificultad) {
-                finJuego(jugador);
+        for (let fil = fInicial + 1; fil <= filas && !endGame; fil++) {
+            if (matriz_box[cInicial][fil].getJugador() === jugador) {
+                contador++;
+                if (contador == dificultad) {
+                    finJuego(jugador);
+                }
+            } else {
+                break;
             }
-        } else {
-            break;
         }
-    }
 
-    //VALIDACION DIAGONAL
-    contador = 0;
-    let cDiagonal = cInicial;
-    let fDiagonal = fInicial;
-    while (cDiagonal <= columnas && fDiagonal >= 0 && !endGame) {
-        if (matriz_box[cDiagonal][fDiagonal].getJugador() === jugador) {
-            contador++;
-            if (contador == dificultad) {
-                finJuego(jugador);
+        //VALIDACION DIAGONAL
+        contador = 0;
+        let cDiagonal = cInicial;
+        let fDiagonal = fInicial;
+        while (cDiagonal <= columnas && fDiagonal >= 0 && !endGame) {
+            if (matriz_box[cDiagonal][fDiagonal].getJugador() === jugador) {
+                contador++;
+                if (contador == dificultad) {
+                    finJuego(jugador);
+                }
+                cDiagonal++;
+                fDiagonal--;
+            } else {
+                break;
             }
-            cDiagonal++;
-            fDiagonal--;
-        } else {
-            break;
         }
-    }
 
-    cDiagonal = cInicial - 1;
-    fDiagonal = fInicial + 1;
-    while (cDiagonal >= 0 && fDiagonal <= filas && !endGame) {
-        if (matriz_box[cDiagonal][fDiagonal].getJugador() === jugador) {
-            contador++;
-            if (contador == dificultad) {
-                finJuego(jugador);
+        cDiagonal = cInicial - 1;
+        fDiagonal = fInicial + 1;
+        while (cDiagonal >= 0 && fDiagonal <= filas && !endGame) {
+            if (matriz_box[cDiagonal][fDiagonal].getJugador() === jugador) {
+                contador++;
+                if (contador == dificultad) {
+                    finJuego(jugador);
+                }
+                cDiagonal--;
+                fDiagonal++;
+            } else {
+                break;
             }
-            cDiagonal--;
-            fDiagonal++;
-        } else {
-            break;
         }
-    }
 
-    //VALIDACION DIAGONAL
-    contador = 0;
-    cDiagonal = cInicial;
-    fDiagonal = fInicial;
-    while (cDiagonal >= 0 && fDiagonal >= 0 && !endGame) {
-        if (matriz_box[cDiagonal][fDiagonal].getJugador() === jugador) {
-            contador++;
-            if (contador == dificultad) {
-                finJuego(jugador);
+        //VALIDACION DIAGONAL
+        contador = 0;
+        cDiagonal = cInicial;
+        fDiagonal = fInicial;
+        while (cDiagonal >= 0 && fDiagonal >= 0 && !endGame) {
+            if (matriz_box[cDiagonal][fDiagonal].getJugador() === jugador) {
+                contador++;
+                if (contador == dificultad) {
+                    finJuego(jugador);
+                }
+                cDiagonal--;
+                fDiagonal--;
+            } else {
+                break;
             }
-            cDiagonal--;
-            fDiagonal--;
-        } else {
-            break;
+        }
+        cDiagonal = cInicial + 1;
+        fDiagonal = fInicial + 1;
+        while (cDiagonal <= columnas && fDiagonal <= filas && !endGame) {
+            if (matriz_box[cDiagonal][fDiagonal].getJugador() === jugador) {
+                contador++;
+                if (contador == dificultad) {
+                    finJuego(jugador);
+                }
+                cDiagonal++;
+                fDiagonal++;
+            } else {
+                break;
+            }
         }
     }
-    cDiagonal = cInicial + 1;
-    fDiagonal = fInicial + 1;
-    while (cDiagonal <= columnas && fDiagonal <= filas && !endGame) {
-        if (matriz_box[cDiagonal][fDiagonal].getJugador() === jugador) {
-            contador++;
-            if (contador == dificultad) {
-                finJuego(jugador);
-            }
-            cDiagonal++;
-            fDiagonal++;
-        } else {
-            break;
-        }
-    }
-}
 
 //FINALIZAR JUEGO
-function finJuego(jugador) {
-    clearTimeout(timerId);
-    resultadoCanvas.style.display = 'flex';
-    resultadoCanvas.innerHTML =  jugador + ' won';
-    endGame = true;
-}
-
- 
-function canvasReload() {
-    ctx.drawImage(imageFondo, 0, 0, canvas.width, canvas.height);
-    for (let i = columnas; i >= 0; i--) {
-        for (let j = filas; j >= 0; j--) {
-            matriz_box[i][j].draw();
-        }
-    }
-    for (let i = 0; i < listaFichasJugador1.length; i++) {
-        listaFichasJugador1[i].draw();
-    }
-    for (let i = 0; i < listaFichasJugador2.length; i++) {
-        listaFichasJugador2[i].draw();
-    }
-}
-
-//CONTROL TIME
-function decreaseTimer() {
-    if (timer > 0) {
-        timerId = setTimeout(decreaseTimer, 1000);
-        timer--;
-        let minutes = Math.floor(timer / 60);
-        let segundos = timer % 60;
-        minutes = minutes < 10 ? "0" + minutes : minutes;
-        segundos = segundos < 10 ? "0" + segundos : segundos;
-        document.querySelector(".timer-canvas").innerHTML = minutes + ' : ' + segundos;
-    }
-    if (timer === 0) {
+    function finJuego(jugador) {
         clearTimeout(timerId);
         resultadoCanvas.style.display = 'flex';
-        resultadoCanvas.innerHTML = 'Tied';
+        resultadoCanvas.innerHTML =  jugador + ' won';
         endGame = true;
     }
-}
 
- 
-function getMousePos(event) {
-    let ClientRect = canvas.getBoundingClientRect();
-    return { 
-        x: Math.round(event.clientX - ClientRect.left),
-        y: Math.round(event.clientY - ClientRect.top)
+
+    function canvasReload() {
+        ctx.drawImage(imageFondo, 0, 0, canvas.width, canvas.height);
+        for (let i = columnas; i >= 0; i--) {
+            for (let j = filas; j >= 0; j--) {
+                matriz_box[i][j].draw();
+            }
+        }
+        for (let i = 0; i < listaFichasJugador1.length; i++) {
+            listaFichasJugador1[i].draw();
+        }
+        for (let i = 0; i < listaFichasJugador2.length; i++) {
+            listaFichasJugador2[i].draw();
+        }
     }
-}
+
+//CONTROL TIME
+    function decreaseTimer() {
+        if (timer > 0) {
+            timerId = setTimeout(decreaseTimer, 1000);
+            timer--;
+            let minutes = Math.floor(timer / 60);
+            let segundos = timer % 60;
+            minutes = minutes < 10 ? "0" + minutes : minutes;
+            segundos = segundos < 10 ? "0" + segundos : segundos;
+            document.querySelector(".timer-canvas").innerHTML = minutes + ' : ' + segundos;
+        }
+        if (timer === 0) {
+            clearTimeout(timerId);
+            resultadoCanvas.style.display = 'flex';
+            resultadoCanvas.innerHTML = 'Tied';
+            endGame = true;
+        }
+    }
+
+
+    function getMousePos(event) {
+        let ClientRect = canvas.getBoundingClientRect();
+        return {
+            x: Math.round(event.clientX - ClientRect.left),
+            y: Math.round(event.clientY - ClientRect.top)
+        }
+    }
 }
 
