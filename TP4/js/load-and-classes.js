@@ -368,9 +368,6 @@ function loadHeader() {
 
 document.querySelector(".menu-div").addEventListener("click", function (e) {
     document.querySelector(".navigation").classList.toggle("navigation_mobil");
-    //TODO La animacion deberia ser a partir de los 3 palitos
-    // document.querySelector(".hamburger").classList.toggle("transparent");
-    // document.querySelector(".cross").classList.toggle("transparent");
     let line1 = document.querySelector(".menu-line.line1");
     let line2 = document.querySelector(".menu-line.line2");
     let line3 = document.querySelector(".menu-line.line3");
@@ -378,17 +375,23 @@ document.querySelector(".menu-div").addEventListener("click", function (e) {
     line1.classList.toggle('rotated-menu-line-1');
     line2.classList.toggle('rotated-menu-line-2');
     line3.classList.toggle('rotated-menu-line-3');
-    // document.querySelector(".menu-line").animate([
-    //     { transform: 'rotate(0.25turn)'}], {duration: 250, });
 
 });
 document.querySelector(".menu-div").addEventListener("mouseenter", function (e) {
-    document.querySelector(".hamburger i").classList.toggle("hovered");
-    document.querySelector(".cross i").classList.toggle("hovered");
+    let line1 = document.querySelector(".menu-line.line1");
+    let line2 = document.querySelector(".menu-line.line2");
+    let line3 = document.querySelector(".menu-line.line3");
+    line1.classList.add('hovered');
+    line2.classList.add('hovered');
+    line3.classList.add('hovered');
 });
 document.querySelector(".menu-div").addEventListener("mouseleave", function (e) {
-    document.querySelector(".hamburger i").classList.toggle("hovered");
-    document.querySelector(".cross i").classList.toggle("hovered");
+    let line1 = document.querySelector(".menu-line.line1");
+    let line2 = document.querySelector(".menu-line.line2");
+    let line3 = document.querySelector(".menu-line.line3");
+    line1.classList.remove('hovered');
+    line2.classList.remove('hovered');
+    line3.classList.remove('hovered');
 });
 document.querySelector(".btn_sub_menu").addEventListener("click", function (e) {
     document.querySelector(".sub_menu_display").classList.toggle("sub_menu");

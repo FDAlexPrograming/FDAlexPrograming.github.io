@@ -112,6 +112,10 @@
     max-height: 365px;
 }
 
+.news-game-section.slideshow {
+    margin-top: 100px;
+}
+
 .news-game-section .scrolling-wrapper-card {
     height: 600px;
 }
