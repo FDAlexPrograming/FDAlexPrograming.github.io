@@ -282,11 +282,12 @@ a{
 
 .menu-div{
     display: flex;
+    flex-direction: column;
     align-items: center;
     height: 43px;
     position: absolute;
-    right: 30px;
-    bottom: 37px;
+    right: 31px;
+    bottom: 7px;
 
 }
 
@@ -419,9 +420,6 @@ margin: 10px 10px 0 0;
     body header nav ul li{
         font-size: 1.5rem;
     }
- 
-
-   
 
     header img{
         width: 100px;
@@ -449,6 +447,11 @@ margin: 10px 10px 0 0;
     }
 }
 
+@media (max-width: 1200px) {
+    .menu-div {
+        bottom: 0;
+    }
+}
 
 @media (min-width: 1200px) {
 

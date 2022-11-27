@@ -79,3 +79,32 @@ h2 {
 .hovered {
     color: #fff;
 }
+.menu-line {
+    width: 21px;
+    height: 4px;
+    color: #7C7C7C;
+    background-color: #7C7C7C;
+    margin-top: 4px;
+    border-radius: 2px;
+    transition: all 250ms ease-in-out;
+}
+
+.rotated-menu-line-1 {
+    rotate: 45deg;
+    bottom: 35px;
+    position: absolute;
+}
+
+.rotated-menu-line-2 {
+    rotate: -45deg;
+}
+
+.rotated-menu-line-3 {
+    rotate: 45deg;
+    bottom: 35px;
+    position: absolute;
+}
+
+.active-menu-div {
+    bottom: 0!important;
+}
