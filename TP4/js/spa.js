@@ -33,6 +33,238 @@ async function loadNews(){
             <button data-action="left" class="btn-carousel btn btn-next" onclick="moveImageLeft()" ><i class="fa-solid fa-chevron-left"></i></button>
             <button data-action="right" class="btn-carousel btn btn-prev" onclick="moveImageRight()"><i class="fa-solid fa-chevron-right"></i></i></button>
         </div>
+
+        <main class="game-coming">
+        <section class="hero background-dark">
+            <div class="prof1">
+            </div>
+            <div class="prof2">
+            </div>
+            <div class="prof3">
+                <img src="../img/starfield/Starfield_logo.svg.png" alt="logo starfield">
+            </div>
+            <div class="call-to-action">
+                <button><span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <a href=""><span>Resérvalo Ya</span></a>
+                </button>
+            </div>
+            <div class="mouse-scroll"></div>
+        </section>
+        <section class="info-game-coming">
+            <div class="left-section">
+                <article id="hero-card-1" class="hero-card-content showContent">
+                    <div id="hero-title-1" class="hero-card-title fade-in">
+                        <p>vive tu aventura espacial</p>
+                    </div>
+                    <div class="hero-card-image">
+                        <img id="hero-img-1" class="from-left slide-in" src="../img/starfield/coming/starfield_art_neon.jpg" alt="aventura espacial starfield">
+                    </div>
+                </article>
+                <article id="hero-card-2" class="hero-card-content">
+                    <div class="hero-card-title fade-in">
+                        <p>embarcate en un viaje epico</p>
+                    </div>
+                    <div class="hero-card-image">
+                        <img class="from-left slide-in" src="../img/starfield/coming/starfield_art_biome_exploration.jpg" alt="viaje epico starfield">
+                    </div>   
+                </article>
+                <article id="hero-card-3" class="hero-card-content">
+                    <div id="hero-title-3" class="hero-card-title fade-in">
+                        <p>Explora Planetas y Forja Alianzas</p>
+                    </div>
+                    <div class="hero-card-image">
+                        <img id="hero-img-3" class="from-left slide-in" src="../img/starfield/coming/starfield_art_street.jpg" alt="exploracion starfield">
+                    </div>               
+                </article>
+            </div>
+            <div class="right-section">
+                <div id="hero-text-1" class="hero-text-content">
+                    <p id="hero-paragraph-1" class="from-right slide-in showContent">Starfield es el primer universo nuevo en 25 años que crea Bethesda Game Studios, los galardonados creadores de The Elder Scrolls V: Skyrim y Fallout 4. En este juego de aventura de próxima generación ambientado entre las estrellas, podrás crear el personaje que desees y explorar con una libertad sin precedentes mientras te embarcas en un viaje épico para desentrañar el mayor misterio de la humanidad.</p>
+                </div>
+                <div id="hero-text-2" class="hero-text-content">
+                    <p class="from-right slide-in">Corre el año 2330. La humanidad se ha aventurado más allá de nuestro sistema solar para asentarse en planetas nuevos y vivir como un pueblo espacial. Tras dejar atrás tus humildes inicios en la minería espacial, te unirás a Constelación, el último grupo de exploradores espaciales en busca de raros artefactos por toda la galaxia, y viajarás por la vasta extensión de los Sistemas Colonizados en el juego más grande y ambicioso de Bethesda Game Studios.</p>
+                </div>
+                <div id="hero-text-3" class="hero-text-content">
+                    <p id="hero-paragraph-3" class="from-right slide-in">Explora los Sistemas Colonizados de Starfield.Descubre los nuevos detalles de la particular ambientación de Starfield y de las facciones que la pueblan. Desde las dos mayores facciones de los Sistemas Colonizados (las Colonias Unidas y el Colectivo Freestar) y los piratas de la Flota Carmesí, hasta los intrépidos exploradores de Constelación, con los que iniciaran su viaje en el vasto universo de Starfield.</p>
+                </div>
+            </div>        
+        </section>
+        <section id="positionGalery" class="characters-galery">
+            <article class="characters">
+                <h2 class="title slide-up">personajes</h2>
+                <div class="box-all-characters">
+                    <div class="container-characters">
+                        <ul>
+                            <li>
+                                <div class="card"> 
+                                    <div class="card-front">
+                                        <img src="../img/starfield/personajes/9.jfif" alt="persoanje starfield">
+                                    </div> 
+                                    <div class="card-back">
+                                        <h3>Lothem</h3>
+                                        <img src="../img/starfield/personajes/9.jfif" alt="persoanje starfield">
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="card"> 
+                                    <div class="card-front">
+                                        <img src="../img/starfield/personajes/starfield-xbox.jpg" alt="persoanje starfield">
+                                    </div> 
+                                    <div class="card-back">
+                                        <h3>Hank</h3>
+                                        <img src="../img/starfield/personajes/starfield-xbox.jpg" alt="persoanje starfield">
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="card"> 
+                                    <div class="card-front">
+                                        <img src="../img/starfield/personajes/2kdQDCEVyeR7uEFmtDPLMo.jpg" alt="persoanje starfield">
+                                    </div>
+                                    <div class="card-back">
+                                        <h3>Alfred</h3>
+                                        <img src="../img/starfield/personajes/2kdQDCEVyeR7uEFmtDPLMo.jpg" alt="persoanje starfield">
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="card">
+                                    <div class="card-front">
+                                        <img src="../img/starfield/personajes/El-protagonista-de-Starfield-no-sera-un-personaje-con-voz.jpg" alt="persoanje starfield">
+                                    </div>
+                                    <div class="card-back">
+                                        <h3>Michelle</h3>
+                                        <img src="../img/starfield/personajes/El-protagonista-de-Starfield-no-sera-un-personaje-con-voz.jpg" alt="persoanje starfield">
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                <div class="container-characters">
+                    <ul>
+                        <li>
+                            <div class="card">
+                                <div class="card-front">
+                                    <img src="../img/starfield/personajes/starfield-character-creation.jpg" alt="persoanje starfield">
+                                </div>
+                                <div class="card-back">
+                                    <h3>Rochelle</h3>
+                                    <img src="../img/starfield/personajes/starfield-character-creation.jpg" alt="persoanje starfield">
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="card">
+                                <div class="card-front">
+                                    <img src="../img/starfield/personajes/Los-modelos-de-personajes-realistas-de-Starfield-se-destacan-en.jpg" alt="persoanje starfield">
+                                </div>
+                                <div class="card-back">
+                                    <h3>Vicktor</h3>
+                                    <img src="../img/starfield/personajes/Los-modelos-de-personajes-realistas-de-Starfield-se-destacan-en.jpg" alt="persoanje starfield">
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="card">
+                                <div class="card-front">
+                                    <img src="../img/starfield/personajes/starfield-journey-begins.jpg" alt="persoanje starfield">
+                                </div>
+                                <div class="card-back">
+                                    <h3>Tom and Ed</h3>
+                                    <img src="../img/starfield/personajes/starfield-journey-begins.jpg" alt="persoanje starfield">
+                                </div>
+                            </div>
+                        </li>
+                        <li> 
+                            <div class="card">
+                                <div class="card-front">
+                                    <img src="../img/starfield/personajes/starfield-traits-best.jpg" alt="persoanje starfield">
+                                </div> 
+                                <div class="card-back">
+                                    <h3>tyra</h3>
+                                    <img src="../img/starfield/personajes/starfield-traits-best.jpg" alt="persoanje starfield">
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            </div>
+            </article>
+            <article class="galery" id="galery">
+                <h2 class="title slide-up">multimedia</h2>
+                <div class="slide-up"><img src="../img/starfield/avance y jugabilidad/img1.jpg" alt="multimedia starfield"></div>
+                <div class="slide-up">
+                    <button class="button-left" id="button-galery-left"><i class="fas fa-angle-left"></i></button>
+                    <ul class="slide">
+                        <li><div><img src="../img/starfield/avance y jugabilidad/img1.jpg" alt="multimedia starfield"></div></li>
+                        <li><div><img src="../img/starfield/avance y jugabilidad/img2.jpg" alt="multimedia starfield"></div></li>
+                        <li><div><img src="../img/starfield/avance y jugabilidad/img3.jpg" alt="multimedia starfield"></div></li>
+                        <li><div><img src="../img/starfield/avance y jugabilidad/img4.jpg" alt="multimedia starfield"></div></li>
+                        <li><div><img src="../img/starfield/avance y jugabilidad/img5.jpg" alt="multimedia starfield"></div></li>
+                        <li><div><img src="../img/starfield/avance y jugabilidad/img6.jpg" alt="multimedia starfield"></div></li>
+                        <li><div><img src="../img/starfield/avance y jugabilidad/img7.jpg" alt="multimedia starfield"></div></li>
+                        <li><div><img src="../img/starfield/avance y jugabilidad/img8.jpg" alt="multimedia starfield"></div></li>
+                    </ul>
+                    <button class="button-right" id="button-galery-right"><i class="fas fa-angle-right"></i></button>
+                </div>
+                <div class="pag-slide"></div>
+            </article>
+            <div class="spriteSheet-background">
+                <div class="astronaut"></div>
+            </div>
+        </section>
+        <section class="features">
+            <article>
+                <h2>informacion adicional</h2>
+                <div>
+                    <div>
+                        <img src="../img/starfield/avance y jugabilidad/clasificacion.jpg" alt="clasificacion juego">
+                    </div>
+                    <div>      
+                        <h3>clasificacion pendiente</h3>
+                        <p>El contenido puede ser inapropiado para menores de edad. Para obtener información sobre la clasificación, consulta ESRB.org.</p>
+                    </div>
+              </div>
+                <ul>
+                    <li>
+                        <h3>género</h3>
+                        <p>aventura</p>
+                    </li>
+                    <li>
+                        <h3>publicado por</h3>
+                        <p>bethesda softworks</p>
+                    </li>
+                    <li>
+                        <h3>características</h3>
+                        <p>un solo jugador</p>
+                    </li>
+                    <li>
+                        <h3>fecha de lanzamiento</h3>
+                        <p>12/02/2023</p>
+                    </li>
+                    <li>
+                        <h3>desarrollador</h3>
+                        <p>bethesda game Studios</p>
+                    </li>
+                </ul>
+            </article>
+        </section>
+        <section class="card-game">
+            <div><img src="../img/starfield/starfield.jpeg" alt="starfield"></div>
+            <div>
+                <h2>starfield</h2>
+                <p>12/02/2023 00:00 gmt-3</p>
+                <div>
+                    <button><a href="">reservar</a></button>
+                </div>
+            </div>
+        </section>
+    </main>
     
     <section class="news-game-section slideshow">
         <div class="wrapper-scroll">

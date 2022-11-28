@@ -366,11 +366,15 @@ function loadHeader() {
 
 }
 
+let line1 = document.querySelector(".menu-line.line1"); 
+let line2 = document.querySelector(".menu-line.line2");
+let line3 = document.querySelector(".menu-line.line3");
+
+
+
 document.querySelector(".menu-div").addEventListener("click", function (e) {
     document.querySelector(".navigation").classList.toggle("navigation_mobil");
-    let line1 = document.querySelector(".menu-line.line1");
-    let line2 = document.querySelector(".menu-line.line2");
-    let line3 = document.querySelector(".menu-line.line3");
+  
     let menuDiv = document.querySelector(".menu-div").classList.toggle('active-menu-div');
     line1.classList.toggle('rotated-menu-line-1');
     line2.classList.toggle('rotated-menu-line-2');
@@ -378,17 +382,11 @@ document.querySelector(".menu-div").addEventListener("click", function (e) {
 
 });
 document.querySelector(".menu-div").addEventListener("mouseenter", function (e) {
-    let line1 = document.querySelector(".menu-line.line1");
-    let line2 = document.querySelector(".menu-line.line2");
-    let line3 = document.querySelector(".menu-line.line3");
     line1.classList.add('hovered');
     line2.classList.add('hovered');
     line3.classList.add('hovered');
 });
 document.querySelector(".menu-div").addEventListener("mouseleave", function (e) {
-    let line1 = document.querySelector(".menu-line.line1");
-    let line2 = document.querySelector(".menu-line.line2");
-    let line3 = document.querySelector(".menu-line.line3");
     line1.classList.remove('hovered');
     line2.classList.remove('hovered');
     line3.classList.remove('hovered');
