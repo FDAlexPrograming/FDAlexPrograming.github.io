@@ -22,6 +22,18 @@ async function loadNews(){
         </div>
     </section>
     
+    <section class="animated-carousel">
+        <div class="slider">
+            <img data-info="asd"  class="slider-image" src="./images/news/half-life11.png">
+            <img data-info="asd"  class="slider-image" src="./images/news/half-life12.png">
+            <img data-info="asd"  class="slider-image" src="./images/news/half-life1.png">
+        </div>
+    </section>
+        <div class="btns">
+            <button data-action="left" class="btn-carousel btn btn-next" onclick="moveImageLeft()" ><i class="fa-solid fa-chevron-left"></i></button>
+            <button data-action="right" class="btn-carousel btn btn-prev" onclick="moveImageRight()"><i class="fa-solid fa-chevron-right"></i></i></button>
+        </div>
+    
     <section class="news-game-section slideshow">
         <div class="wrapper-scroll">
             <div class="scrolling-wrapper-card">
@@ -49,7 +61,8 @@ async function loadNews(){
         <span class="dot" onclick="currentSlide(3)"></span>
     </div>
    `;
-    
+    generateSlideIndicators();
+    setActiveImage(i);
     showSlides(1);
     loadWallpaperCarousels();
     card();
@@ -286,7 +299,7 @@ async function loadGame(){
 
 
         `;
-        init();
+    init();
 
 
 
@@ -300,5 +313,5 @@ async function loadGame(){
     }
     document.getElementsByClassName("game-info-carousel").item(0).appendChild(gameInfo.section);
 
-   
+
 }

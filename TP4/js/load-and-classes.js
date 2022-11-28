@@ -409,10 +409,10 @@ function init(){
     const CANVAS_HEIGHT = 607;
     const CANVAS_IMG_BACKGROUND = "goku.png";
     const CANVAS_IMG_BOX = "nube.png";
-    let imageFondo = new Image();
-    let imagenFicha1 = new Image();
-    let imagenFicha2 = new Image();
-    let imgBox = new Image();
+    let imageFondo = new setActiveImage();
+    let imagenFicha1 = new setActiveImage();
+    let imagenFicha2 = new setActiveImage();
+    let imgBox = new setActiveImage();
     imgBox.src = CANVAS_IMG_BOX;
     let dificultad;
     let columnas;
