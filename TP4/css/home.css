@@ -89,6 +89,10 @@ h2 {
     transition: all 250ms ease-in-out;
 }
 
+header {
+    z-index: 2000;
+}
+
 .rotated-menu-line-1 {
     rotate: 45deg;
     bottom: 35px;
