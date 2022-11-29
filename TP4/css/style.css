@@ -23,7 +23,7 @@ body{
     margin: 0;
 }
 header{
-    position: fixed;
+    position: fixed !important;
     width: 100%;
     background-color: black;
     height: 60px;
