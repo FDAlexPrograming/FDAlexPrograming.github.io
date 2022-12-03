@@ -375,8 +375,31 @@ document.querySelector(".menu-div").addEventListener("click", function (e) {
     line1.classList.toggle('rotated-menu-line-1');
     line2.classList.toggle('rotated-menu-line-2');
     line3.classList.toggle('rotated-menu-line-3');
+    setTimeout(() => {
+        toggleMenuItems();
+    }, 100)
+    // toggleMenuItems();
 
 });
+
+function toggleMenuItems() {
+    let menuElements = document.querySelectorAll(".menu li, .menu hr");
+    if (menuElements.item(0).style.right === '0px') {
+        for (let menuElement of menuElements) {
+            menuElement.style.right = '-500px';
+        }
+    }
+    else {
+        let timeout = 50;
+        for (let menuElement of menuElements) {
+            timeout += 25;
+            setTimeout(() => {
+                menuElement.style.right = '0px';
+            }, timeout)
+        }
+    }
+}
+
 document.querySelector(".menu-div").addEventListener("mouseenter", function (e) {
     let line1 = document.querySelector(".menu-line.line1");
     let line2 = document.querySelector(".menu-line.line2");

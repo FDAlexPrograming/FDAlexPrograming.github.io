@@ -234,6 +234,15 @@ i:hover{
     border-radius: 5px;
     margin-left: 20px;
 }
+
+
+.menu li, .menu hr {
+    position: relative;
+    right: -500px;
+    transition: all 250ms ease-in-out;
+}
+
+
 .sub_menu_display{
     position: absolute;
     display: flex;
@@ -288,7 +297,7 @@ a{
     position: absolute;
     right: 31px;
     bottom: 7px;
-
+    cursor: pointer;
 }
 
 .menu{
