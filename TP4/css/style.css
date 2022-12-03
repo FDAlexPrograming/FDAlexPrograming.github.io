@@ -23,11 +23,11 @@ body{
     margin: 0;
 }
 header{
-    position: fixed;
+    position: fixed !important;
     width: 100%;
     background-color: black;
     height: 60px;
-    z-index: 100;
+    z-index: 1000;
     display: flex;
 
 }
@@ -83,6 +83,7 @@ img{
     color: #949494;
     transition: all .3s;
 }
+
 .menu ul li:hover{
     color: #fff;
 }
@@ -274,9 +275,6 @@ a{
     cursor: pointer;
 }
 
-
-
-
 .navigation ul{
     margin: auto;
 }
@@ -297,7 +295,10 @@ a{
     position: absolute;
     right: 31px;
     bottom: 7px;
+<<<<<<< HEAD
     cursor: pointer;
+=======
+>>>>>>> a9f5458e87ef0e2407f3dd13c672d5599f50e1a5
 }
 
 .menu{
