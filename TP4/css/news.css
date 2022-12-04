@@ -199,6 +199,7 @@
     overflow: hidden;
     top: 100px;
     border-radius: 10px;
+    margin-bottom: 200px;
 }
 .slider {
     width: inherit;
@@ -255,3 +256,25 @@
 .btns {
     z-index: 300;
 }
+
+.news-main-container {
+    background: url("../images/news/news2.png") no-repeat fixed;
+    background-size: cover;
+    background-position-x: center;
+}
+
+/*.scroll-snap-section {*/
+/*    scroll-snap-align: center;*/
+/*}*/
+
+/*.news-scrolling {*/
+/*    overflow-y: scroll;*/
+/*    scroll-snap-type: y mandatory;*/
+/*    height:100vh;*/
+/*    transition: all 150ms ease-in-out;*/
+
+/*}*/
+
+/*html {*/
+/*    scroll-behavior: smooth;*/
+/*}*/

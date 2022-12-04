@@ -4,7 +4,7 @@
 async function loadNews(){
     document.getElementById("main-container").innerHTML = `
     <h4 class="route">> News > </h4>
-    <section class="wallpaper-section">
+    <section class="wallpaper-section scroll-snap-section">
         <h3>Yes, it's finally here.. Trust me..</h3>
         <img class="background-wallpaper" src="./images/news/news2.png" alt="half life wallpaper">
         <div class="front-news-container">
@@ -15,59 +15,61 @@ async function loadNews(){
             </div>
         </div>
     </section>
-    <section class="news-description">
+    <section class="news-description scroll-snap-section">
         <h3>A little history...</h3>
         <div class="game-info-section-news-description">
             <p>Half-Life (stylized HλLF-LIFE) is a science fiction techno-thriller first-person shooter video game developed by Valve Corporation. This game was the company's debut and the first of what would later become the Half-Life series. The title, distributed by Sierra Studios, was released on November 19, 1998. A PlayStation 2 remake was also released on November 14, 2002. The plot of Half-Life takes place in a relatively modern, but unknown time.</p>
         </div>
     </section>
     
-    <section class="animated-carousel">
+    <section class="animated-carousel scroll-snap-section">
         <div class="slider">
             <img data-info="asd"  class="slider-image" src="./images/news/half-life11.png">
             <img data-info="asd"  class="slider-image" src="./images/news/half-life12.png">
             <img data-info="asd"  class="slider-image" src="./images/news/half-life1.png">
         </div>
-    </section>
         <div class="btns">
             <button data-action="left" class="btn-carousel btn btn-next" onclick="moveImageLeft()" ><i class="fa-solid fa-chevron-left"></i></button>
             <button data-action="right" class="btn-carousel btn btn-prev" onclick="moveImageRight()"><i class="fa-solid fa-chevron-right"></i></i></button>
         </div>
-    
-    <section class="news-game-section slideshow">
-        <div class="wrapper-scroll">
-            <div class="scrolling-wrapper-card">
-                <div class="slide fade">
-                    <img class="card-wallpaper" src="./images/news/half-life11.png" >   
-                </div>
-          
-                <div class="slide fade">   
-                    <img class="card-wallpaper" src="./images/news/half-life12.png">       
-                </div>
-          
-                <div class="slide fade">
-                    <img class="card-wallpaper" src="./images/news/half-life1.png" >    
-                </div>
-            </div>
-        </div>
-        <div class="btns">
-            <button class="btn-carousel" onclick="plusSlides(-1)"><i class="fa-solid fa-chevron-left"></i></button>
-            <button class="btn-carousel" onclick="plusSlides(1)"><i class="fa-solid fa-chevron-right"></i></i></button>
-        </div>
     </section>
-    <div class="dot-style">
-        <span class="dot" onclick="currentSlide(1)"></span>
-        <span class="dot" onclick="currentSlide(2)"></span>
-        <span class="dot" onclick="currentSlide(3)"></span>
-    </div>
+    
+<!--    <section class="news-game-section slideshow">-->
+<!--        <div class="wrapper-scroll">-->
+<!--            <div class="scrolling-wrapper-card">-->
+<!--                <div class="slide fade">-->
+<!--                    <img class="card-wallpaper" src="./images/news/half-life11.png" >   -->
+<!--                </div>-->
+<!--          -->
+<!--                <div class="slide fade">   -->
+<!--                    <img class="card-wallpaper" src="./images/news/half-life12.png">       -->
+<!--                </div>-->
+<!--          -->
+<!--                <div class="slide fade">-->
+<!--                    <img class="card-wallpaper" src="./images/news/half-life1.png" >    -->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="btns">-->
+<!--            <button class="btn-carousel" onclick="plusSlides(-1)"><i class="fa-solid fa-chevron-left"></i></button>-->
+<!--            <button class="btn-carousel" onclick="plusSlides(1)"><i class="fa-solid fa-chevron-right"></i></i></button>-->
+<!--        </div>-->
+<!--    </section>-->
+<!--    <div class="dot-style">-->
+<!--        <span class="dot" onclick="currentSlide(1)"></span>-->
+<!--        <span class="dot" onclick="currentSlide(2)"></span>-->
+<!--        <span class="dot" onclick="currentSlide(3)"></span>-->
+<!--    </div>-->
    `;
     generateSlideIndicators();
     setActiveImage(i);
-    showSlides(1);
+    // showSlides(1);
     loadWallpaperCarousels();
     card();
-    setInterval(()=> {plusSlides(1);}, 3000);
-
+    // setInterval(()=> {plusSlides(1);}, 3000);
+    document.getElementById('main-container').classList.toggle('news-main-container');
+    document.getElementById('main-container').classList.toggle('news-scrolling');
+    // document.getElementById("main-container").style.backgroundImage = './images/news/news2.png';
 }
 
 let gameImages = [
@@ -97,11 +99,11 @@ async function loadGame(){
         </div>
         <div class="hero" id="div-hero-game">
         <section class="game-section game-section-container">
-    <img class="game-background-wallpaper" src="./images/game/Rectangle21_2.png" alt="Game wallpaper">
-    <img class="game-front-image-1" src="./images/game/front-wallpaper.png">
-    <button class="play game-play-button" id="btn-play-cel">play</button>
-</section>
-</div>
+            <img class="game-background-wallpaper" src="./images/game/Rectangle21_2.png" alt="Game wallpaper">
+            <img class="game-front-image-1" src="./images/game/front-wallpaper.png">
+            <button class="play game-play-button" id="btn-play-cel">play</button>
+        </section>
+        </div>
 
 
         <div class="hero" id="div-hero-game">

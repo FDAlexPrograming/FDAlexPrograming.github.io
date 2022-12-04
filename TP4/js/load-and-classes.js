@@ -379,10 +379,10 @@ document.querySelector(".menu-div").addEventListener("click", function (e) {
     line1.classList.toggle('rotated-menu-line-1');
     line2.classList.toggle('rotated-menu-line-2');
     line3.classList.toggle('rotated-menu-line-3');
-    setTimeout(() => {
-        toggleMenuItems();
-    }, 100)
-    // toggleMenuItems();
+    // setTimeout(() => {
+    //     toggleMenuItems();
+    // }, 100)
+    toggleMenuItems();
 
 });
 
