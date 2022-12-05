@@ -18,7 +18,8 @@ async function loadNews(){
          </div>
     </section>
     <section class="no-parallax two">
-    <h1>HALF LIFE 3</h1>
+   
+    <h1 class="parpadea text">HALF LIFE 3</h1>
         <section class="wallpaper-section scroll-snap-section "> 
     </section>
     </section>
