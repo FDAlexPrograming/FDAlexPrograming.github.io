@@ -295,10 +295,7 @@ a{
     position: absolute;
     right: 31px;
     bottom: 7px;
-<<<<<<< HEAD
     cursor: pointer;
-=======
->>>>>>> a9f5458e87ef0e2407f3dd13c672d5599f50e1a5
 }
 
 .menu{
@@ -482,11 +479,9 @@ margin: 10px 10px 0 0;
         width: 120px;
         height: 80px;
         margin: 0;
-        padding-left: 100px;
+        margin-left: 100px;
     }
-    .nav ul{
-        padding-left: 4rem;
-    }
+   
     body header nav ul li{
         font-size: 1.5rem;
         margin: 2rem;

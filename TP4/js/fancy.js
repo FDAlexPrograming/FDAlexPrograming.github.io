@@ -11,8 +11,8 @@ window.onscroll = () => {
             }
             menuVertical.style.transform = "translateX(-12rem)";
             logo.style.height = '60px';
-            logo.style.paddingLeft = '0px';
-            navList.style.padding = '0px';
+            logo.style.marginLeft = '0px';
+            navList.style.margin = '0px';
             navList.style.transition = "all 1s";
             logo.style.transition = "all 1s";
             menuVertical.style.transform = "translateX(-12rem)";
@@ -25,8 +25,8 @@ window.onscroll = () => {
                 item.style.fontSize = '1.5rem';
             }
             logo.style.height = '60px';
-            logo.style.paddingLeft = '100px';
-            navList.style.paddingLeft = '4rem';
+            logo.style.marginLeft = '100px';
+           
            
         }
     }
@@ -36,15 +36,15 @@ window.onscroll = () => {
                 item.style.fontSize = '1rem';
             }
             logo.style.height = '40px';
-            logo.style.paddingLeft = '0px';
-            navList.style.padding = '0px';
+            logo.style.marginLeft = '0px';
+            navList.style.margin = '0px';
         } else {
             for (let item of navItems) {
                 item.style.fontSize = '1.5rem';
             }
             logo.style.height = '60px';
             logo.style.paddingLeft = '0px';
-            navList.style.paddingLeft = '0px';
+            navList.style.marginLeft = '0px';
         }
     }
 }

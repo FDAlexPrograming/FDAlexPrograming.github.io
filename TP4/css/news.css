@@ -36,6 +36,8 @@
 }
 
 .front-news-container h1 {
+    height: 40px;
+    font-size: 25px;
     padding: 5px;
     background: #393939;
     position:relative;
@@ -54,6 +56,7 @@
 }
 
 .news-front-price:hover h1 {
+   
     background-color: #000000;
     cursor: pointer;
 }
@@ -197,7 +200,7 @@
     width: 750px;
     height: 500px;
     overflow: hidden;
-    top: 100px;
+    top: 180px;
     border-radius: 10px;
     margin-bottom: 200px;
 }
@@ -257,11 +260,7 @@
     z-index: 300;
 }
 
-.news-main-container {
-    background: url("../images/news/news2.png") no-repeat fixed;
-    background-size: cover;
-    background-position-x: center;
-}
+
 
 /*.scroll-snap-section {*/
 /*    scroll-snap-align: center;*/
@@ -278,3 +277,75 @@
 /*html {*/
 /*    scroll-behavior: smooth;*/
 /*}*/
+*, 
+*::before,
+*::after
+{
+  box-sizing: border-box;
+}
+
+
+
+main 
+{
+  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+  perspective: 2px;
+}
+
+main section 
+{
+  transform-style: preserve-3d;
+  position: relative;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #FFF;
+}
+
+main section  h1
+{
+  text-align: center;
+  font-size: 4rem;
+  font-family: sans-serif;
+}
+
+.no-parallax 
+{  
+    background: linear-gradient(rgba(0, 0, 0, .5), rgba(0, 0, 0, .5)), url("../images/news/h1.jpg");
+    z-index: 999;
+}
+.no-parallax.two
+{  
+    background: linear-gradient(rgba(0, 0, 0, .5), rgba(0, 0, 0, .5)), url("../images/news/half-life12.png");
+    z-index: 999;
+}
+
+.parallax h1 
+{
+  width: 60%;
+  font-size: 2rem;
+}
+
+.parallax::after 
+{
+  content: " ";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  transform: translateZ(-1px) scale(1.5);
+  background-size: 100%;
+  z-index: -1;
+}
+
+.bg::after 
+{
+  background: linear-gradient(rgba(0, 0, 0, .5), rgba(0, 0, 0, .5)), url("../images/news/news2.png");
+  background-size: cover;
+}
+
+

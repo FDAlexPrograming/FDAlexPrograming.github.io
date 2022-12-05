@@ -4,17 +4,26 @@
 async function loadNews(){
     document.getElementById("main-container").innerHTML = `
     <h4 class="route">> News > </h4>
-    <section class="wallpaper-section scroll-snap-section">
-        <h3>Yes, it's finally here.. Trust me..</h3>
-        <img class="background-wallpaper" src="./images/news/news2.png" alt="half life wallpaper">
-        <div class="front-news-container">
-            <img class="front-wallpaper" src="./images/news/news1.png" alt="half life wallpaper">
-            <div class="news-front-price">
-                <h1>PRE ORDER NOW</h1>
-                <h2>$80.99</h2>
-            </div>
-        </div>
+    <main>
+        <section class="no-parallax">
+        <h1>Yes, it's finally here.. Trust me..</h1>
+        </section>
+        <section class="parallax bg">
+             <img class="front-wallpaper" src="./images/news/news1.png" alt="half life wallpaper">
+             <div class="front-news-container">
+             <div class="news-front-price">
+                 <h1>PRE ORDER NOW</h1>
+                 <h2>$80.99</h2>
+             </div>
+         </div>
     </section>
+    <section class="no-parallax two">
+    <h1>HALF LIFE 3</h1>
+        <section class="wallpaper-section scroll-snap-section "> 
+    </section>
+    </section>
+  </main>
+   
     <section class="news-description scroll-snap-section">
         <h3>A little history...</h3>
         <div class="game-info-section-news-description">
