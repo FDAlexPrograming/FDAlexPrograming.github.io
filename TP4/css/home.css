@@ -116,3 +116,22 @@ header {
 .active-menu-div {
     bottom: 0!important;
 }
+
+.zoom:hover {
+    transform: scale(1.2);
+}
+
+.categories-card {
+    margin: 3% !important;
+    padding: 0px !important;
+}
+
+.categories-card .container h2 {
+    padding-bottom: 3%;
+}
+
+@media (max-width: 1000px) {
+    .zoom:hover {
+        transform: scale(1.1);
+    }
+}

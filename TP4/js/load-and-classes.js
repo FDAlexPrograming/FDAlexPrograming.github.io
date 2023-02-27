@@ -136,7 +136,7 @@ class Card {
         this.imageURI = image;
         this.price = price;
         this.card = document.createElement("div");
-        this.card.classList.add("card-game");
+        this.card.classList.add("card-game", "zoom");
         let img = document.createElement("img");
         img.classList.add("game-card-image");
         img.src=image;
@@ -336,25 +336,25 @@ function loadHeader() {
     
     <div class="wrapper-scroll no-rell">
         <div class="scrolling-wrapper">
-            <div class="card">
+            <div class="card zoom categories-card">
                 <img src="isset/casual.png">
                 <div class="container">
                 <h2>Casual</h2>   
                 </div>
             </div>
-            <div class="card">
+            <div class="card zoom categories-card">
                 <img src="isset/rol.png">
                 <div class="container">
                 <h2>Rol</h2>   
                 </div>
             </div>
-            <div class="card">
+            <div class="card zoom categories-card">
                 <img src="isset/indie.png">
                 <div class="container">
                 <h2>Indie</h2>     
                 </div>
             </div>
-            <div class="card">
+            <div class="card zoom categories-card">
                 <img src="isset/mult.png">
                 <div class="container">
                 <h2>Multiplayer</h2>   
@@ -430,10 +430,10 @@ function init(){
     const CANVAS_HEIGHT = 607;
     const CANVAS_IMG_BACKGROUND = "goku.png";
     const CANVAS_IMG_BOX = "nube.png";
-    let imageFondo = new setActiveImage();
-    let imagenFicha1 = new setActiveImage();
-    let imagenFicha2 = new setActiveImage();
-    let imgBox = new setActiveImage();
+    let imageFondo = new Image();
+    let imagenFicha1 = new Image();
+    let imagenFicha2 = new Image();
+    let imgBox = new Image();
     imgBox.src = CANVAS_IMG_BOX;
     let dificultad;
     let columnas;
@@ -450,6 +450,7 @@ function init(){
     let ficha_j1_seleccionada = null;
     let listaFichasJugador2 = [];
     let ficha_j2_seleccionada = null;
+    let fichaAMover = null;
     let matriz_box = [];
     let boxSeleccionado = null;
     imageFondo.src = CANVAS_IMG_BACKGROUND;
@@ -579,7 +580,7 @@ function init(){
 
 //DIBUJAR BOX JUEGO
     function canvasDraw() {
-        //BAGROUND
+        //BACKROUND
         ctx.drawImage(imageFondo, 0, 0, canvas.width, canvas.height);
 
         let total_fichas = ((filas * columnas) / 2) + 1;
@@ -653,49 +654,42 @@ function init(){
     canvas.addEventListener('mousedown', function (event) {
         if (!endGame) {
             let mousePos = getMousePos(event);
+            let fichasJugadorActual;
             if (turnoJ1) {
-                for (let i = 0; i < listaFichasJugador1.length; i++) {
-                    let x = mousePos.x;
-                    let y = mousePos.y;
-                    let dx = Math.abs(x - listaFichasJugador1[i].getPosCanvasX());
-                    let dy = Math.abs(y - listaFichasJugador1[i].getPosCanvasY());
-                    let distancia = Math.sqrt(Math.pow(dx, 2) + Math.pow(dy, 2));
-                    if (distancia <= listaFichasJugador1[i].getRadio() && listaFichasJugador1[i].isHabilitada()) {
-                        ficha_j1_seleccionada = listaFichasJugador1[i];
-                        inicioX = listaFichasJugador1[i].getPosCanvasX();
-                        inicioY = listaFichasJugador1[i].getPosCanvasY();
-                        break;
-                    }
+                fichasJugadorActual = listaFichasJugador1;
+
+            } else {
+                fichasJugadorActual = listaFichasJugador2;
+            }
+            for (let i = 0; i < fichasJugadorActual.length; i++) {
+                let x = mousePos.x;
+                let y = mousePos.y;
+                let dx = Math.abs(x - fichasJugadorActual[i].getPosCanvasX());
+                let dy = Math.abs(y - fichasJugadorActual[i].getPosCanvasY());
+                let distancia = Math.sqrt(Math.pow(dx, 2) + Math.pow(dy, 2));
+                if (distancia <= fichasJugadorActual[i].getRadio() && fichasJugadorActual[i].isHabilitada()) {
+                    fichaAMover = fichasJugadorActual[i];
+                    inicioX = fichasJugadorActual[i].getPosCanvasX();
+                    inicioY = fichasJugadorActual[i].getPosCanvasY();
+                    break;
                 }
-            } else {//TURNO J2
-                for (let i = 0; i < listaFichasJugador2.length; i++) {
-                    let x = mousePos.x;
-                    let y = mousePos.y;
-                    let dx = Math.abs(x - listaFichasJugador2[i].getPosCanvasX());
-                    let dy = Math.abs(y - listaFichasJugador2[i].getPosCanvasY());
-                    let distancia = Math.sqrt(Math.pow(dx, 2) + Math.pow(dy, 2));
-                    if (distancia <= listaFichasJugador2[i].getRadio() && listaFichasJugador2[i].isHabilitada()) {
-                        ficha_j2_seleccionada = listaFichasJugador2[i];
-                        inicioX = listaFichasJugador2[i].getPosCanvasX();
-                        inicioY = listaFichasJugador2[i].getPosCanvasY();
-                        break;
-                    }
-                }
+
             }
         }
+
     });
     canvas.addEventListener('mousemove', function (event) {
         let mousePos = getMousePos(event);
         if (turnoJ1) {
-            if (ficha_j1_seleccionada != null) {
-                ficha_j1_seleccionada.setPosicionCanvas(
+            if (fichaAMover != null) {
+                fichaAMover.setPosicionCanvas(
                     mousePos.x,
                     mousePos.y
                 )
             }
         } else {
-            if (ficha_j2_seleccionada != null) {
-                ficha_j2_seleccionada.setPosicionCanvas(
+            if (fichaAMover != null) {
+                fichaAMover.setPosicionCanvas(
                     mousePos.x,
                     mousePos.y
                 )
@@ -706,7 +700,7 @@ function init(){
     canvas.addEventListener('mouseup', function (event) {
         let validarPosX = -1;
         let validarPosY = -1;
-        if (ficha_j1_seleccionada != null || ficha_j2_seleccionada != null) {
+        if (fichaAMover != null) {
             let mousePos = getMousePos(event);
             for (let i = columnas; i >= 0 && !boxSeleccionado; i--) {
                 let j = 0;
@@ -719,11 +713,11 @@ function init(){
                     for (let fil = filas; fil >= 0 && !boxSeleccionado; fil--) {
                         if (!matriz_box[i][fil].isOcupado()) {
                             matriz_box[i][fil].setOcupado(true);
-                            if (ficha_j1_seleccionada != null) {
-                                matriz_box[i][fil].setJugador(ficha_j1_seleccionada.getJugador());
+                            if (fichaAMover != null) {
+                                matriz_box[i][fil].setJugador(fichaAMover.getJugador());
                             } else {
-                                if (ficha_j2_seleccionada != null) {
-                                    matriz_box[i][fil].setJugador(ficha_j2_seleccionada.getJugador());
+                                if (fichaAMover != null) {
+                                    matriz_box[i][fil].setJugador(fichaAMover.getJugador());
                                 }
                             }
                             boxSeleccionado = matriz_box[i][fil];
@@ -734,57 +728,37 @@ function init(){
                 }
             }
         }
-        if (turnoJ1 && ficha_j1_seleccionada != null) {
-            for (let y = 0; y < listaFichasJugador1.length; y++) {
-                if (ficha_j1_seleccionada.getId() === listaFichasJugador1[y].getId()) {
+        let fichasJugadorActual;
+        if (turnoJ1) {
+            fichasJugadorActual = listaFichasJugador1;
+        } else {
+            fichasJugadorActual = listaFichasJugador2;
+        }
+        if (fichaAMover != null) {
+            for (let y = 0; y < fichasJugadorActual.length; y++) {
+                if (fichaAMover.getId() === fichasJugadorActual[y].getId()) {
                     if (boxSeleccionado != null) {
                         let posNueva = {
                             x: boxSeleccionado.getPosCanvasX() + (boxSeleccionado.getLadoX() / 2),
-                            y: boxSeleccionado.getPosCanvasY() - 1 + ((boxSeleccionado.getLadoY() - listaFichasJugador1[y].getRadio()))
+                            y: boxSeleccionado.getPosCanvasY() - 1 + ((boxSeleccionado.getLadoY() - fichasJugadorActual[y].getRadio()))
                         }
                         validarJugada(boxSeleccionado.getJugador(), validarPosX, validarPosY);
 
-                        listaFichasJugador1[y].setHabilitada(false);
-                        listaFichasJugador1[y].setPosicionFinal(posNueva.x, posNueva.y);
-                        listaFichasJugador1[y - 1].setHabilitada(true);
+                        fichasJugadorActual[y].setHabilitada(false);
+                        fichasJugadorActual[y].setPosicionFinal(posNueva.x, posNueva.y);
+                        fichasJugadorActual[y - 1].setHabilitada(true);
                         turnoJ1 = !turnoJ1;
                         turnoCanvas.innerHTML = 'Turn of ' + nombre2;
                     } else {
                         if (boxSeleccionado == null
-                            && ficha_j1_seleccionada.getId() === listaFichasJugador1[y].getId()) {
-                            listaFichasJugador1[y].setPosicionInicial();
+                            && fichaAMover.getId() === fichasJugadorActual[y].getId()) {
+                            fichasJugadorActual[y].setPosicionInicial();
                         }
                     }
                     break;
                 }
             }
-            ficha_j1_seleccionada = null;
-        } else {
-            if (!turnoJ1 && ficha_j2_seleccionada != null) {
-                for (let y = 0; y < listaFichasJugador2.length; y++) {
-                    if (ficha_j2_seleccionada.getId() === listaFichasJugador2[y].getId()) {
-                        if (boxSeleccionado != null) {
-                            let posNueva = {
-                                x: boxSeleccionado.getPosCanvasX() + (boxSeleccionado.getLadoX() / 2),
-                                y: boxSeleccionado.getPosCanvasY() - 1 + ((boxSeleccionado.getLadoY() - listaFichasJugador2[y].getRadio()))
-                            }
-                            validarJugada(boxSeleccionado.getJugador(), validarPosX, validarPosY);
-                            listaFichasJugador2[y].setHabilitada(false);
-                            listaFichasJugador2[y].setPosicionFinal(posNueva.x, posNueva.y);
-                            listaFichasJugador2[y - 1].setHabilitada(true);
-                            turnoJ1 = !turnoJ1;
-                            turnoCanvas.innerHTML = 'Turn of ' + nombre1;
-                        } else {
-                            if (boxSeleccionado == null
-                                && ficha_j2_seleccionada.getId() === listaFichasJugador2[y].getId()) {
-                                listaFichasJugador2[y].setPosicionInicial();
-                            }
-                        }
-                        break;
-                    }
-                }
-                ficha_j2_seleccionada = null;
-            }
+            fichaAMover = null;
         }
         boxSeleccionado = null;
         canvasReload();
